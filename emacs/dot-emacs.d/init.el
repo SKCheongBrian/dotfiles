@@ -38,11 +38,11 @@
 
 (require 'brian-options)
 (require 'brian-keyboard-quit-dwim)
-(require 'brian-fonts)
 (require 'brian-themes-and-icons)
 (require 'brian-minibuffer)
 (require 'brian-dired)
 (require 'brian-whichkey)
 (require 'brian-eglot)
 (require 'brian-reveal)
+(require 'brian-modeline)
 

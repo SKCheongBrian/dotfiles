@@ -9,10 +9,10 @@
      "ae20535e46a88faea5d65775ca5510c7385cbf334dfa7dde93c0cd22ed663ba0"
      default))
  '(package-selected-packages
-   '(corfu dired-subtree ef-themes exec-path-from-shell haskell-mode
-	   marginalia markdown-mode nano-modeline
-	   nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-	   orderless ox-reveal trashed vertico)))
+   '(company corfu dired-subtree ef-themes exec-path-from-shell
+	     haskell-mode marginalia markdown-mode nano-modeline
+	     nerd-icons-completion nerd-icons-corfu nerd-icons-dired
+	     orderless ox-reveal trashed vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

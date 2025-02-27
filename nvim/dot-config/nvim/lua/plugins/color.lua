@@ -1,9 +1,9 @@
 -- colorscheme for my neovim
 return {
-  'shaunsingh/solarized.nvim',
+  'EdenEast/nightfox.nvim',
   lazy = false,
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme('solarized')
+    vim.cmd.colorscheme('carbonfox')
   end,
 }

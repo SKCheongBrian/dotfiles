@@ -1,7 +1,7 @@
 (use-package ef-themes
   :ensure t
   :config
-  (load-theme 'ef-cyprus :no-confirm-loading))
+  (load-theme 'ef-bio :no-confirm-loading))
 
 ;;; Use icon fonts in various places
 ;;  Some stylistic refinement of emacs

@@ -1,6 +1,6 @@
 (use-package exec-path-from-shell
   :ensure t
-  :init
+  :config
   (exec-path-from-shell-initialization))
 
 (use-package eglot
@@ -11,6 +11,9 @@
   (setq eglot-autoshutdown t))
 
 (use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package haskell-mode
   :ensure t)
