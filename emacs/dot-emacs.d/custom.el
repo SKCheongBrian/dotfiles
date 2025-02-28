@@ -10,7 +10,7 @@
      default))
  '(package-selected-packages
    '(company corfu dired-subtree ef-themes exec-path-from-shell
-	     haskell-mode marginalia markdown-mode nano-modeline
+	     haskell-mode magit marginalia markdown-mode nano-modeline
 	     nerd-icons-completion nerd-icons-corfu nerd-icons-dired
 	     orderless ox-reveal trashed vertico)))
 (custom-set-faces

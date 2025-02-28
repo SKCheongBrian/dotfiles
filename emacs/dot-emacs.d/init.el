@@ -45,4 +45,5 @@
 (require 'brian-eglot)
 (require 'brian-reveal)
 (require 'brian-modeline)
+(require 'brian-git)
 
