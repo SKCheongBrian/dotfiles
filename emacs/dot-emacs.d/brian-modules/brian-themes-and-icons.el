@@ -1,7 +1,7 @@
-(use-package ef-themes
+(use-package kanagawa-themes
   :ensure t
   :config
-  (load-theme 'ef-bio :no-confirm-loading))
+  (load-theme 'kanagawa-dragon :no-confirm-loading))
 
 ;;; Use icon fonts in various places
 ;;  Some stylistic refinement of emacs

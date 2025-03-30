@@ -55,6 +55,15 @@
   (with-eval-after-load 'savehist
     (corfu-history-mode 1)
     (add-to-list 'savehist-additional-variables 'corfu-history)))
+
+(use-package consult
+  :ensure t
+  :bind (
+	 ("M-s M-g" . consult-grep)
+	 ("M-s M-f" . consult-find)
+	 ("M-s M-o" . consult-online)
+	 ("M-s M-l" . consult-line)
+	 ("M-s M-b" . consult-buffer)))
   
 
 (provide 'brian-minibuffer)

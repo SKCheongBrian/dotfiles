@@ -23,6 +23,22 @@ The DWIM behaviour of this command is as follows:
    (t
     (keyboard-quit))))
 
+(defun brian/enter-line-below ()
+  "Insert line below and move cursor there no matter where you are on the line."
+  (interactive)
+  (move-end-of-line 1)
+  (newline-and-indent))
+
+(defun brian/enter-line-above ()
+  "Enter a line above and move cursor there no matter where you are on the line."
+  (interactive)
+  (move-beginning-of-line 1)
+  (newline-and-indent)
+  (previous-line))
+  
+
 (define-key global-map (kbd "C-g") #'brian/keyboard-quit-dwim)
+(define-key global-map (kbd "C-<return>") #'brian/enter-line-below)
+(define-key global-map (kbd "M-<return>") #'brian/enter-line-above)
 
 (provide 'brian-keyboard-quit-dwim)

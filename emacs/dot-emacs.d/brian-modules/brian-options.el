@@ -25,5 +25,9 @@
 	   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
 	   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.0))))
 
+(use-package rainbow-mode
+  :ensure t
+  :hook (emacs-lisp-mode text-mode lisp-mode prog-mode))
+
 
 (provide 'brian-options)

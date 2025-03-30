@@ -12,6 +12,9 @@
 (package-initialize)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))  
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
 
 ;;; Set up use-package
 ;;  powerful tool for configuring packages in a streamlined way
@@ -46,4 +49,5 @@
 (require 'brian-reveal)
 (require 'brian-modeline)
 (require 'brian-git)
+(require 'brian-expand-region)
 

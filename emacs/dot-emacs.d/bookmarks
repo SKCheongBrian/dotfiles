@@ -2,16 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("emacs config"
- (filename . "~/dotfiles/emacs/dot-emacs.d/init.el")
- (front-context-string . ";;; Customisatio")
- (rear-context-string)
- (position . 1)
- (last-modified 26561 47591 118741 466000))
-("CS6215"
- (filename . "~/school/mods/CS6215/")
+(("delta-debug" (filename . "~/school/mods/CS6215/delta-debug/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "80 Mar 14 08:57 ") (position . 218)
+ (last-modified 26579 32907 75204 0))
+("CS2030S TA" (filename . "~/School/GT/CS2030S-2425-s2/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "44 Mar  4 11:15 ") (position . 219)
+ (last-modified 26566 43557 647967 0))
+("emacs config" (filename . "~/dotfiles/emacs/dot-emacs.d/init.el")
+ (front-context-string . ";;; Customisatio") (rear-context-string)
+ (position . 1) (last-modified 26561 47591 118741 466000))
+("CS6215" (filename . "~/school/mods/CS6215/")
  (front-context-string . "delta-debug\n  -r")
- (rear-context-string . "96 Feb 25 16:12 ")
- (position . 217)
+ (rear-context-string . "96 Feb 25 16:12 ") (position . 217)
  (last-modified 26561 16378 473704 10000))
 )
