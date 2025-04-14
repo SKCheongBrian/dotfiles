@@ -1,4 +1,5 @@
 local wezterm = require('wezterm')
+local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').main
 
 local config = {}
 
@@ -14,7 +15,6 @@ config.font = wezterm.font {
 config.font_size = 16.0
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
-config.color_scheme = "carbonfox"
 config.keys = {
   {
     key = 'm',
@@ -22,6 +22,6 @@ config.keys = {
     action = wezterm.action.DisableDefaultAssignment,
   },
 }
-
+config.colors = theme.colors()
 
 return config
