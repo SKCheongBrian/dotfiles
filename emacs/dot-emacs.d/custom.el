@@ -11,12 +11,12 @@
      "ae20535e46a88faea5d65775ca5510c7385cbf334dfa7dde93c0cd22ed663ba0"
      default))
  '(package-selected-packages
-   '(company consult corfu diff-hl dired-subtree ef-themes
-	     exec-path-from-shell expand-region go-mode haskell-mode
-	     kanagawa-themes magit marginalia markdown-mode
-	     nano-modeline nerd-icons-completion nerd-icons-corfu
-	     nerd-icons-dired orderless ox-reveal rainbow-mode trashed
-	     vertico)))
+   '(autothemer company consult corfu diff-hl dired-subtree ef-themes
+		exec-path-from-shell expand-region go-mode
+		haskell-mode kanagawa-themes lsp-mode magit marginalia
+		markdown-mode nano-modeline nerd-icons-completion
+		nerd-icons-corfu nerd-icons-dired orderless ox-reveal
+		rainbow-mode rose-pine-theme trashed vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

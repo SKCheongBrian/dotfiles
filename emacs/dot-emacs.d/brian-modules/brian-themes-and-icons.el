@@ -1,7 +1,9 @@
-(use-package kanagawa-themes
-  :ensure t
-  :config
-  (load-theme 'kanagawa-dragon :no-confirm-loading))
+
+(use-package autothemer
+  :ensure t)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/rose-pine-emacs")
+(load-theme 'rose-pine-color t)       ;; main
 
 ;;; Use icon fonts in various places
 ;;  Some stylistic refinement of emacs

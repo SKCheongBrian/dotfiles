@@ -40,22 +40,13 @@ return {
         end,
       }
       require("which-key").add({
-        {"<leader>c", group = "[c]ode"},
-        {"<leader>cd", group = "[d]ebug"},
-        {"<leader>r", group = "[r]ename"},
+        { "<leader>c",  group = "[c]ode" },
+        { "<leader>cd", group = "[d]ebug" },
+        { "<leader>r",  group = "[r]ename" },
       })
       -- K for hover duh haha
+      vim.diagnostic.config({ virtual_text = true, jump = { float = true } })
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover" })
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-      vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-      vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to [D]efinition" })
-      vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references,
-        { noremap = true, silent = true, desc = "Go to [r]eferences" })
-      vim.keymap.set('n', 'gI', require('fzf-lua').lsp_implementations, { desc = '[G]oto [I]mplementation' })
-      vim.keymap.set('n', '<leader>D', require('fzf-lua').lsp_typedefs, { desc = 'Type [D]efinitions' })
-      vim.keymap.set({ 'n' }, '<leader>ca', require('fzf-lua').lsp_code_actions, { desc = "[C]ode [A]ction" })
       vim.keymap.set({ 'n' }, '<leader>rn', vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
     end
   },

@@ -9,5 +9,6 @@ return {
     require('mini.comment').setup()
     -- enables editing surrounding things
     require('mini.surround').setup()
+    -- require('mini.statusline').setup()
   end
 }

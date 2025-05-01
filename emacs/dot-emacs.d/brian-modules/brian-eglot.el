@@ -3,13 +3,19 @@
   :config
   (exec-path-from-shell-initialization))
 
-(use-package eglot
-  :ensure nil
-  :config
-  (add-hook 'prog-mode-hook 'eglot-ensure)
-  (setq eglot-sync-connect nil)
-  (setq eglot-autoshutdown t)
-  (defalias 'start-lsp #'eglot))
+(use-package lsp-mode
+  :ensure t
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (prog-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
 
 (use-package company
   :ensure t
