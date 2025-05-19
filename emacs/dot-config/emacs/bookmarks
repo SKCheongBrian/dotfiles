@@ -1,0 +1,17 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored"
+ (filename . "~/org/agenda/inbox.org")
+ (front-context-string . "** Meeting with ")
+ (rear-context-string . "-12 Mon 12:00>>\n")
+ (position . 187)
+ (last-modified 26658 5561 670140 56000))
+("config"
+ (filename . "~/.config/emacs/")
+ (front-context-string . "auto-save-list\n ")
+ (rear-context-string . "96 May 12 23:01 ")
+ (position . 215)
+ (last-modified 26658 3492 456170 616000))
+)

@@ -1,0 +1,8 @@
+PREF_FILTER_TESTCODE=false
+eclipse.preferences.version=1
+java.project.resourceFilters=node_modules\:\:\\.git
+m2e.disableTestClasspathFlag=false
+maven.multiModuleProjectDirectory=/home/briancheong/repos/fyp-backend-rewrite
+org.eclipse.jdt.ui.importorder=java;javax;org;com
+org.eclipse.jdt.ui.typefilter.enabled=com.sun.*;io.micrometer.shaded.*;java.awt.*;jdk.*;org.graalvm.*;sun.*
+workspaceInitialized=true

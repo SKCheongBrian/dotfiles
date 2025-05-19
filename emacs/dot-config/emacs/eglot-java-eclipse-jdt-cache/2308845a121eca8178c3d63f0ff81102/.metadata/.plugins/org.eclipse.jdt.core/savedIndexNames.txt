@@ -1,0 +1,14 @@
+INDEX VERSION 1.134+/home/briancheong/dotfiles/emacs/dot-config/emacs/eglot-java-eclipse-jdt-cache/2308845a121eca8178c3d63f0ff81102/.metadata/.plugins/org.eclipse.jdt.core
+573854914.index
+311628980.index
+3440183549.index
+3156503774.index
+1482042018.index
+2166078298.index
+32481741.index
+2498949604.index
+3203500190.index
+2768961366.index
+2678423038.index
+1398799660.index
+900586112.index

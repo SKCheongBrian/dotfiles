@@ -1,0 +1,552 @@
+!SESSION 2025-05-11 00:19:07.212 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=21.0.7
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_SG
+Command-line arguments:  -data /home/briancheong/.config/emacs/eglot-java-eclipse-jdt-cache/2308845a121eca8178c3d63f0ff81102
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:09.540
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:09.596
+!MESSAGE Started org.eclipse.buildship.core 39ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:09.596
+!MESSAGE Started org.eclipse.m2e.core 0ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:09.742
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:09.800
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:09.803
+!MESSAGE Initializing Java Language Server 1.46.1.202504011455
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:10.455
+!MESSAGE ProjectRegistryRefreshJob finished 859ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:10.613
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:10.614
+!MESSAGE Non-Static Commands: [java.project.import, java.project.changeImportedProjects, java.navigate.openTypeHierarchy, java.project.resolveStackTraceLocation, java.edit.handlePasteEvent, java.edit.stringFormatting, java.project.getSettings, java.project.resolveWorkspaceSymbol, java.project.upgradeGradle, java.project.createModuleInfo, java.vm.getAllInstalls, java.edit.organizeImports, java.project.refreshDiagnostics, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.updateSettings, java.project.getAll, java.reloadBundles, java.project.isTestFile, java.project.resolveText, java.project.getClasspaths, java.navigate.resolveTypeHierarchy, java.edit.smartSemicolonDetection, java.project.updateSourceAttachment, java.project.updateClassPaths, java.decompile, java.protobuf.generateSources, java.project.resolveSourceAttachment, java.project.updateJdk, java.project.addToSourcePath, java.completion.onDidSelect]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:10.630
+!MESSAGE RepositoryRegistryUpdateJob finished 1ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:10.649
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:10.669
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:12.234
+!MESSAGE Workspace initialized in 1605ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:12.265
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:12.834
+!MESSAGE Reconciled 1. Took 18 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:13.541
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:13.544
+!MESSAGE 3 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:13.553
+!MESSAGE Validated 1. Took 67 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:13.775
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:13.775
+!MESSAGE >> registerWatchers'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:13.779
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:15.004
+!MESSAGE Reconciled 1. Took 3 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:15.484
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:15.485
+!MESSAGE 3 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:15.486
+!MESSAGE Validated 1. Took 31 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:16.637
+!MESSAGE Reconciled 1. Took 2 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:17.110
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:17.110
+!MESSAGE 3 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:17.111
+!MESSAGE Validated 1. Took 23 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:17.280
+!MESSAGE Reconciled 1. Took 4 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:17.769
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:17.771
+!MESSAGE 3 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:17.772
+!MESSAGE Validated 1. Took 41 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:18.241
+!MESSAGE Reconciled 1. Took 3 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:18.675
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:18.676
+!MESSAGE 1 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:18.677
+!MESSAGE Validated 1. Took 34 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:21.750
+!MESSAGE Reconciled 1. Took 2 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:22.184
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:22.184
+!MESSAGE 0 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:22.185
+!MESSAGE Validated 1. Took 34 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:22.516
+!MESSAGE Reconciled 1. Took 3 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:22.945
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:22.946
+!MESSAGE 3 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:22.947
+!MESSAGE Validated 1. Took 30 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:23.557
+!MESSAGE Reconciled 1. Took 3 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:23.983
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:23.984
+!MESSAGE 3 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:23.985
+!MESSAGE Validated 1. Took 27 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:25.357
+!MESSAGE Reconciled 1. Took 7 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:25.783
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:25.783
+!MESSAGE 3 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:25.784
+!MESSAGE Validated 1. Took 25 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:26.391
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:32.211
+!MESSAGE Reconciled 1. Took 2 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:32.635
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:32.636
+!MESSAGE 0 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:32.636
+!MESSAGE Validated 1. Took 24 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:32.979
+!MESSAGE Reconciled 1. Took 3 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:33.438
+!MESSAGE begin problem for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:33.439
+!MESSAGE 0 problems reported for /JavaDiagramBackendApplication.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:19:33.440
+!MESSAGE Validated 1. Took 59 ms
+!SESSION 2025-05-11 00:20:12.164 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=21.0.7
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_SG
+Command-line arguments:  -data /home/briancheong/.config/emacs/eglot-java-eclipse-jdt-cache/2308845a121eca8178c3d63f0ff81102
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-05-11 00:20:13.297
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:14.094
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:14.130
+!MESSAGE Started org.eclipse.buildship.core 18ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:14.131
+!MESSAGE Started org.eclipse.m2e.core 1ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:14.133
+!MESSAGE ProjectRegistryRefreshJob finished 1ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:14.232
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:14.251
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:14.253
+!MESSAGE Initializing Java Language Server 1.46.1.202504011455
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:15.109
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:15.109
+!MESSAGE Non-Static Commands: [java.project.import, java.project.changeImportedProjects, java.navigate.openTypeHierarchy, java.project.resolveStackTraceLocation, java.edit.handlePasteEvent, java.edit.stringFormatting, java.project.getSettings, java.project.resolveWorkspaceSymbol, java.project.upgradeGradle, java.project.createModuleInfo, java.vm.getAllInstalls, java.edit.organizeImports, java.project.refreshDiagnostics, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.updateSettings, java.project.getAll, java.reloadBundles, java.project.isTestFile, java.project.resolveText, java.project.getClasspaths, java.navigate.resolveTypeHierarchy, java.edit.smartSemicolonDetection, java.project.updateSourceAttachment, java.project.updateClassPaths, java.decompile, java.protobuf.generateSources, java.project.resolveSourceAttachment, java.project.updateJdk, java.project.addToSourcePath, java.completion.onDidSelect]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:15.135
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:16.279
+!MESSAGE RepositoryRegistryUpdateJob finished 0ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:16.301
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:16.315
+!MESSAGE Workspace initialized in 37ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:16.322
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:16.354
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:16.354
+!MESSAGE >> registerWatchers'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:16.358
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:16.808
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:17.571
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:17.574
+!MESSAGE 1 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:17.577
+!MESSAGE Validated 1. Took 118 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:21.158
+!MESSAGE Reconciled 1. Took 7 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:21.629
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:21.630
+!MESSAGE 1 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:21.631
+!MESSAGE Validated 1. Took 70 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:21.725
+!MESSAGE Reconciled 1. Took 20 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:21.755
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:21.941
+!MESSAGE Reconciled 1. Took 12 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:21.951
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:22.450
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:22.450
+!MESSAGE 4 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:22.455
+!MESSAGE Validated 1. Took 63 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:22.487
+!MESSAGE Reconciled 1. Took 6 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:22.549
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:22.987
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:22.988
+!MESSAGE 4 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:22.989
+!MESSAGE Validated 1. Took 51 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:24.895
+!MESSAGE Reconciled 1. Took 4 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:25.391
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:25.391
+!MESSAGE 4 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:25.392
+!MESSAGE Validated 1. Took 46 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:25.533
+!MESSAGE Reconciled 1. Took 3 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:25.978
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:25.979
+!MESSAGE 4 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:25.979
+!MESSAGE Validated 1. Took 45 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:26.758
+!MESSAGE Reconciled 1. Took 3 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:27.248
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:27.249
+!MESSAGE 4 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:27.250
+!MESSAGE Validated 1. Took 40 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:28.212
+!MESSAGE Reconciled 1. Took 4 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:28.703
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:28.703
+!MESSAGE 3 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:28.704
+!MESSAGE Validated 1. Took 41 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:29.241
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:29.279
+!MESSAGE Reconciled 1. Took 4 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:29.779
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:29.779
+!MESSAGE 4 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:29.780
+!MESSAGE Validated 1. Took 50 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:30.248
+!MESSAGE Reconciled 1. Took 6 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:30.688
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:30.689
+!MESSAGE 3 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:30.689
+!MESSAGE Validated 1. Took 40 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:31.269
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:31.287
+!MESSAGE Reconciled 1. Took 6 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:31.728
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:31.728
+!MESSAGE 3 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:31.730
+!MESSAGE Validated 1. Took 42 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:31.964
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:32.008
+!MESSAGE Reconciled 1. Took 7 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:32.503
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:32.503
+!MESSAGE 2 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:32.504
+!MESSAGE Validated 1. Took 45 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:32.612
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:32.670
+!MESSAGE Reconciled 1. Took 4 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:33.156
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:33.157
+!MESSAGE 2 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:33.157
+!MESSAGE Validated 1. Took 35 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:34.758
+!MESSAGE Reconciled 1. Took 2 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:35.203
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:35.203
+!MESSAGE 1 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:35.204
+!MESSAGE Validated 1. Took 44 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:38.879
+!MESSAGE Reconciled 1. Took 3 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:39.314
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:39.314
+!MESSAGE 1 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 00:20:39.315
+!MESSAGE Validated 1. Took 35 ms
+!SESSION 2025-05-11 10:33:58.842 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=21.0.7
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_SG
+Command-line arguments:  -data /home/briancheong/.config/emacs/eglot-java-eclipse-jdt-cache/2308845a121eca8178c3d63f0ff81102
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-05-11 10:33:59.390
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:33:59.764
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:33:59.789
+!MESSAGE Started org.eclipse.buildship.core 13ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:33:59.790
+!MESSAGE Started org.eclipse.m2e.core 1ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:33:59.791
+!MESSAGE ProjectRegistryRefreshJob finished 0ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:33:59.864
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:33:59.880
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:33:59.882
+!MESSAGE Initializing Java Language Server 1.46.1.202504011455
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:00.428
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:00.429
+!MESSAGE Non-Static Commands: [java.project.import, java.project.changeImportedProjects, java.navigate.openTypeHierarchy, java.project.resolveStackTraceLocation, java.edit.handlePasteEvent, java.edit.stringFormatting, java.project.getSettings, java.project.resolveWorkspaceSymbol, java.project.upgradeGradle, java.project.createModuleInfo, java.vm.getAllInstalls, java.edit.organizeImports, java.project.refreshDiagnostics, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.updateSettings, java.project.getAll, java.reloadBundles, java.project.isTestFile, java.project.resolveText, java.project.getClasspaths, java.navigate.resolveTypeHierarchy, java.edit.smartSemicolonDetection, java.project.updateSourceAttachment, java.project.updateClassPaths, java.decompile, java.protobuf.generateSources, java.project.resolveSourceAttachment, java.project.updateJdk, java.project.addToSourcePath, java.completion.onDidSelect]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:00.445
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:01.112
+!MESSAGE RepositoryRegistryUpdateJob finished 0ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:01.122
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:01.129
+!MESSAGE Workspace initialized in 17ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:01.133
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:01.159
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:01.159
+!MESSAGE >> registerWatchers'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:01.161
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:01.592
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:02.272
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:02.274
+!MESSAGE 1 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:34:02.275
+!MESSAGE Validated 1. Took 73 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:39:10.132
+!MESSAGE Reconciled 1. Took 4 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:39:10.635
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:39:10.636
+!MESSAGE 1 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:39:10.636
+!MESSAGE Validated 1. Took 52 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:39:12.216
+!MESSAGE Reconciled 1. Took 9 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:39:12.804
+!MESSAGE begin problem for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:39:12.805
+!MESSAGE 1 problems reported for /HeapInfo.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-11 10:39:12.807
+!MESSAGE Validated 1. Took 138 ms
