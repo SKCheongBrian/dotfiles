@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tikz}
+\usepackage{makecell}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+
+\title{Nondeterministic LL Parsing}
+\author{Brian Sze Kai Cheong}
+\date{28 May 2025}
+
+\begin{document}
+\maketitle
+
+\section{NDLL Configurations}
+A configuration is a pair
+$$
+(\gamma, w) \in (\Sigma \cup N)^{*} \times \Sigma^{*}
+$$
+
+\section{Grammar and Items}
+Let $G = (N, \Sigma, P, S)$ be a context-free grammar, since NDLL can parse all context-free grammar, with:
+\begin{itemize}
+\item $N$: nonterminals
+\item $\Sigma$: terminals
+\item $P$: productions of the form $A \to \alpha$
+\item $S$: start symbol
+\end{itemize}
+
+\section{Transition Relation}
+
+Define the transition relation $\Longrightarrow$ as follows
+
+\begin{itemize}
+  \item \textbf{Terminal Match:}
+
+  \begin{itemize}
+    \item If $\gamma = a \cdot \gamma'$, $a \in \Sigma$, and $w = a w'$,\\
+    then $(\gamma, w) \Longrightarrow (\gamma', w')$
+  \end{itemize}
+
+\item \textbf{Nonterminal Expansion:}
+  
+\end{itemize}
+
+
+\section{Unified Parsing Machine (\( \mathcal{U} \))}
+\subsection{Configuration}
+A configuration of \( \mathcal{U} \) is a pair \((w, \sigma) \) where:
+\begin{itemize}
+    \item $w \in \Sigma^*$ is the remaining input to be parsed
+    \item $\sigma$ is a stack of items of the form $A \to \alpha\, \bullet\, \beta$
+\end{itemize}
+
+\subsection{Transition Rules}
+
+\begin{description}[leftmargin=2em, labelindent=1em]
+    \item[Start:]  \( (w, [S' \to \bullet\,S]) \)
+    \item[Closure:] If the top item is \( A \to \alpha\,\bullet\,B\beta \) and $B \in N$, for each $B \to \gamma \in P$:
+    \[
+      (w, \sigma) \longrightarrow (w, \sigma \bullet [B \to \bullet\,\gamma])
+    \]
+
+    \item[Match (Terminal Shift):] If the top item is \( A \to \alpha\,\bullet\,a\beta \), and $w = a w'$:
+    \[
+      (aw', \sigma \bullet [A \to \alpha\,\bullet\,a\beta]) \longrightarrow (w', \sigma \bullet [A \to \alpha a\,\bullet\,\beta])
+    \]
+
+    \item[Complete (Dot Advancement):] If the top item is \( B \to \gamma\,\bullet \), and the item below is \( A \to \alpha\,\bullet\,B\beta \), then:
+    \[
+      (w, \sigma_0 \bullet [A \to \alpha\,\bullet\,B\beta] \bullet [B \to \gamma\,\bullet]) \longrightarrow (w, \sigma_0 \bullet [A \to \alpha B\,\bullet\,\beta])
+    \]
+
+    \item[Accept:] If \( w = \varepsilon \) and \( \sigma = [S' \to S\,\bullet] \), then accept.
+\end{description}
+
+\section{Interpretations}
+
+While the machine $\mathcal{U}$ is syntactically the same, the semantics of the stack and transitions differ:
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Aspect} & \textbf{NDLL} & \textbf{NDLR} \\
+\hline
+\hline
+Derivation & Top-down (leftmost) & \makecell[l]{Bottom-up\\(rightmost in reverse)} \\
+\hline
+Item meaning & Expansion state & Reduction state \\
+\hline
+Closure & \makecell[l]{Expand nonterminal\\$B$} & \makecell[l]{Predict reduction\\site for $B$} \\
+\hline
+Match & Match expected terminal & Shift terminal \\
+\hline
+Complete & Return from subcall & Reduce to nonterminal \\
+\hline
+Stack meaning & Call stack & Partial parse tree stack \\
+\hline
+Accepting config & \makecell[l]{$(\varepsilon,\ [S' \to S\ \bullet])$} & \makecell[l]{$(\varepsilon,\ [S' \to S\ \bullet])$} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+We have defined a unified parsing machine whose transition system can be interpreted both as nondeterministic LL and nondeterministic LR.
+This shows that the distinction between NDLL and NDLR is semantic, not structural.
+
+\end{document}

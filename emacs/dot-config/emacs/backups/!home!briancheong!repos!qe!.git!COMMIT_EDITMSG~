@@ -1,0 +1,23 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	new file:   ndll/auto/main.el
+#	new file:   ndll/main.aux
+#	new file:   ndll/main.fdb_latexmk
+#	new file:   ndll/main.fls
+#	new file:   ndll/main.log
+#	new file:   ndll/main.pdf
+#	new file:   ndll/main.tex
+#	renamed:    main.aux -> um/main.aux
+#	renamed:    main.fdb_latexmk -> um/main.fdb_latexmk
+#	renamed:    main.fls -> um/main.fls
+#	renamed:    main.log -> um/main.log
+#	renamed:    main.pdf -> um/main.pdf
+#	renamed:    main.synctex.gz -> um/main.synctex.gz
+#	renamed:    main.tex -> um/main.tex
+#

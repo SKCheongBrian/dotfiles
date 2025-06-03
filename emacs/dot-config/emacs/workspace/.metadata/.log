@@ -1,0 +1,388 @@
+!SESSION 2025-05-31 09:53:46.578 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=21.0.7
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_SG
+Framework arguments:  --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED
+Command-line arguments:  -data /home/briancheong/.config/emacs/workspace/ --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:48.453
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:48.593
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:48.645
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:48.648
+!MESSAGE Initializing Java Language Server 1.23.0.202304271346
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.475
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/com.microsoft.java.test.plugin-0.28.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.477
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/com.microsoft.jdtls.ext.core-0.5.1.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.479
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/dg.jdt.ls.decompiler.cfr-0.0.2-201802221740.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.481
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/dg.jdt.ls.decompiler.common-0.0.2-201802221740.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.482
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/dg.jdt.ls.decompiler.fernflower-0.0.2-201802221740.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.484
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/dg.jdt.ls.decompiler.procyon-0.0.2-201802221740.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.489
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/io.projectreactor.reactor-core.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.492
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/java.debug.plugin.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.493
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/jdt-ls-commons.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.495
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/jdt-ls-extension.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.496
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.apiguardian_1.1.0.v20190826-0900.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.498
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.eclipse.jdt.junit4.runtime_1.1.1200.v20200214-0716.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.499
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.eclipse.jdt.junit5.runtime_1.0.900.v20200513-0617.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.502
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.jupiter.api_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.504
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.jupiter.engine_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.506
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.jupiter.migrationsupport_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.512
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.jupiter.params_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.515
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.commons_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.518
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.engine_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.520
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.launcher_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.522
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.runner_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.523
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.suite.api_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.525
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.vintage.engine_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.527
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.opentest4j_1.2.0.v20190826-0900.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.528
+!MESSAGE Installed reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.reactivestreams.reactive-streams.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.545
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/jdt-ls-commons.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.549
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.commons_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.555
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.jupiter.api_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.560
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.eclipse.jdt.junit4.runtime_1.1.1200.v20200214-0716.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.564
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.engine_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.575
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.eclipse.jdt.junit5.runtime_1.0.900.v20200513-0617.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.576
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.apiguardian_1.1.0.v20190826-0900.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.577
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.suite.api_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.577
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.vintage.engine_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.596
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/java.debug.plugin.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.597
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.jupiter.migrationsupport_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.618
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/com.microsoft.java.test.plugin-0.28.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.619
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.reactivestreams.reactive-streams.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.620
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/io.projectreactor.reactor-core.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.659
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/dg.jdt.ls.decompiler.procyon-0.0.2-201802221740.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.660
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.jupiter.engine_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.681
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/com.microsoft.jdtls.ext.core-0.5.1.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.691
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/jdt-ls-extension.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.704
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/dg.jdt.ls.decompiler.cfr-0.0.2-201802221740.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.704
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.opentest4j_1.2.0.v20190826-0900.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.705
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.runner_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.705
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.jupiter.params_5.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.705
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/org.junit.platform.launcher_1.6.0.v20200203-2009.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.717
+!MESSAGE Started reference:file:/home/briancheong/.config/emacs/.cache/lsp/eclipse.jdt.ls/bundles/dg.jdt.ls.decompiler.fernflower-0.0.2-201802221740.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.722
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.723
+!MESSAGE Non-Static Commands: [java.edit.organizeImports, java.project.refreshDiagnostics, java.project.import, java.navigate.openTypeHierarchy, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.resolveStackTraceLocation, java.project.getAll, java.reloadBundles, java.project.isTestFile, java.edit.handlePasteEvent, java.project.getClasspaths, java.navigate.resolveTypeHierarchy, java.edit.stringFormatting, java.project.getSettings, java.project.updateSourceAttachment, java.project.resolveWorkspaceSymbol, java.project.upgradeGradle, java.decompile, java.project.createModuleInfo, java.protobuf.generateSources, java.project.resolveSourceAttachment, java.project.addToSourcePath, java.completion.onDidSelect]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.723
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.723
+!MESSAGE Non-Static Commands: [vscode.java.test.search.codelens, vscode.java.test.search.items.all, vscode.java.test.search.location, vscode.java.test.search.items, vscode.java.test.get.testpath, vscode.java.test.junit.argument]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.724
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.724
+!MESSAGE Non-Static Commands: [vscode.java.checkProjectSettings, vscode.java.isOnClasspath, vscode.java.fetchUsageData, vscode.java.validateLaunchConfig, vscode.java.resolveInlineVariables, vscode.java.resolveClassFilters, vscode.java.resolveMainMethod, vscode.java.resolveClasspath, vscode.java.resolveBuildFiles, vscode.java.resolveMainClass, vscode.java.updateDebugSettings, vscode.java.resolveSourceUri, vscode.java.fetchPlatformSettings, vscode.java.buildWorkspace, vscode.java.startDebugSession, vscode.java.inferLaunchCommandLength, vscode.java.resolveElementAtSelection, vscode.java.resolveJavaExecutable]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.725
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.725
+!MESSAGE Non-Static Commands: [java.project.list, java.getPackageData, java.resolvePath]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.725
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.726
+!MESSAGE Non-Static Commands: [sts.java.addClasspathListener, sts.java.removeClasspathListener]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.726
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.726
+!MESSAGE Non-Static Commands: [sts.java.javadoc]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.727
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.727
+!MESSAGE Non-Static Commands: [sts.java.type]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.727
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.728
+!MESSAGE Non-Static Commands: [sts.java.javadocHoverLink]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.728
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.728
+!MESSAGE Non-Static Commands: [sts.java.location]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.728
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.729
+!MESSAGE Non-Static Commands: [sts.java.search.packages, sts.java.search.types]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.729
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.729
+!MESSAGE Non-Static Commands: [sts.java.hierarchy.supertypes, sts.java.hierarchy.subtypes]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.737
+!MESSAGE Started org.eclipse.m2e.core 0ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.739
+!MESSAGE ProjectRegistryRefreshJob finished 2ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.759
+!MESSAGE Started org.eclipse.buildship.core 20ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.766
+!MESSAGE RepositoryRegistryUpdateJob finished 1ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.780
+!MESSAGE Creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.833
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:49.891
+!MESSAGE Finished creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:50.301
+!MESSAGE Workspace initialized in 536ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:50.349
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:50.353
+!MESSAGE >> registerWatchers'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:50.356
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:50.548
+!MESSAGE Try to create an invisible project for the workspace /home/briancheong/playground
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:50.549
+!MESSAGE Creating the Java project playground_c4950abd
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:50.565
+!MESSAGE Finished creating the Java project playground_c4950abd
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:50.571
+!MESSAGE Successfully created a workspace invisible project playground_c4950abd
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:51.036
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:51.338
+!MESSAGE Reconciled 1. Took 2 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:51.346
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:51.358
+!MESSAGE >> Updating classpath for project playground_c4950abd
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:51.511
+!MESSAGE begin problem for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:51.511
+!MESSAGE 0 problems reported for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:51.512
+!MESSAGE Validated 1. Took 136 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:51.532
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:51.959
+!MESSAGE Reconciled 1. Took 3 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:52.400
+!MESSAGE begin problem for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:52.401
+!MESSAGE 0 problems reported for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:52.401
+!MESSAGE Validated 1. Took 41 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:52.542
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:53.018
+!MESSAGE begin problem for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:53.019
+!MESSAGE 0 problems reported for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:53.019
+!MESSAGE Validated 1. Took 26 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:54.841
+!MESSAGE Reconciled 1. Took 6 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:55.329
+!MESSAGE begin problem for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:55.329
+!MESSAGE 0 problems reported for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:53:55.329
+!MESSAGE Validated 1. Took 36 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:06.442
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:06.558
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:07.029
+!MESSAGE begin problem for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:07.030
+!MESSAGE 0 problems reported for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:07.030
+!MESSAGE Validated 1. Took 20 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:10.460
+!MESSAGE Reconciled 1. Took 2 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:10.928
+!MESSAGE begin problem for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:10.930
+!MESSAGE 0 problems reported for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:10.930
+!MESSAGE Validated 1. Took 19 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:16.025
+!MESSAGE Reconciled 1. Took 2 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:16.441
+!MESSAGE begin problem for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:16.442
+!MESSAGE 0 problems reported for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:16.442
+!MESSAGE Validated 1. Took 15 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:18.078
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:18.495
+!MESSAGE begin problem for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:18.496
+!MESSAGE 0 problems reported for /A.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2025-05-31 09:54:18.496
+!MESSAGE Validated 1. Took 17 ms

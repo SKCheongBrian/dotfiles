@@ -2,7 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
+(("playground"
+ (filename . "~/playground/")
+ (front-context-string . "B$A.class\n  -rw-")
+ (rear-context-string . "95 Apr 24 14:21 ")
+ (position . 212)
+ (last-modified 26682 18952 153063 494000))
+("soc-website"
+ (filename . "~/repos/mymysoc/")
+ (front-context-string . "eslint.config.js")
+ (rear-context-string . "44 May 26 16:28 ")
+ (position . 221)
+ (last-modified 26676 10012 170445 132000))
+("org-capture-last-stored"
  (filename . "~/org/agenda/inbox.org")
  (front-context-string . "** Meeting with ")
  (rear-context-string . "-12 Mon 12:00>>\n")

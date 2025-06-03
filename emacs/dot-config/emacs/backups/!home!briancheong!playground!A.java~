@@ -1,0 +1,22 @@
+class A {
+    int foo(int n) {
+	System.out.println("A::f");
+	if (n == 0) {
+			return 1;
+		} else {
+			return this.foo(n - 1);
+		}
+	}
+}
+class B extends A {
+	int foo(int n) {
+		System.out.println("B::f");
+		return super.foo(n);
+	}
+}
+class Main {
+	public static void main(String[] args) {
+		A a = new B();
+		System.out.println("= " + a.foo(1000000));
+ }
+}
