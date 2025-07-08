@@ -1,0 +1,15 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   src/content/docs/guides/01-onboarding.mdx
+#	deleted:    src/content/docs/idea-vault.md
+#	new file:   src/content/docs/theory/ideas/00-ideas.mdx
+#
+# Changes not staged for commit:
+#	modified:   package-lock.json
+#

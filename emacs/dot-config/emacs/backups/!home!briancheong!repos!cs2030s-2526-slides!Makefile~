@@ -1,0 +1,10 @@
+TEXFILES := $(wildcard slides/week*.tex)
+PDFS := $(TEXFILES:.tex=.pdf)
+
+all: $(PDFS)
+
+%.pdf: %.tex
+	latexmk -pdf -output-directory=$(dir $<) $<
+
+clean:
+	latexmk -C slides/

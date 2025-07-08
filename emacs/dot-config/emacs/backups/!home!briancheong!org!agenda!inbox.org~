@@ -1,1 +1,60 @@
-* Tasks
+* Tasks :tasks:
+** TODO Test
+  
+  [[file:~/.config/emacs/init.el::"* TODO %?\n %i\n %a")))]]
+* Meetings
+** Meeting with Prof. Michael
+<13-05-2025 <2025-05-13 Tue 10:00>-<2025-05-13 Tue 12:00>>
+
+* Scheduling :sched:
+
+** TODO Find references for SRC :src:qe:
+SCHEDULED: <2025-06-16 Mon 09:30-12:00>
+
+** TODO Eat lunch (EAT.) 
+SCHEDULED: <2025-06-16 Mon 12:00-14:00>
+
+** TODO Work on QE [0/2]                                                 :qe:
+SCHEDULED: <2025-06-16 Mon 14:00-17:00>
+*** TODO Show that UPA and Annotated NLL are in bisimulation
+*** TODO Figure out pop vs nopop for NLR
+
+
+* Planning
+** TODO Packing for OPLSS [14/17] :oplss:
+- [X] Underwear x 10
+- [X] Socks x 10 Pairs
+- [X] (Take out) Shorts x 2 Pairs
+- [X] Sports shorts x 3 pairs
+- [X] Sports shirt x 3
+- [X] T-shirt x 3
+- [X] Poloshirt x 3
+- [X] Pants x 3
+- [X] Sleeping shorts x 5 Pairs
+- [X] Sleeping T-shirt x 5
+- [X] Charger adapter
+- [X] Apple watch charger
+- [X] Dry and wet wipes
+- [-] Toiletries [10/11]
+  - [X] Toothbrush
+  - [X] Toothpaste
+  - [X] Shaver
+  - [X] Shaving cream
+  - [X] Shampoo
+  - [X] Body soap
+  - [X] face soap
+  - [ ] Moisturiser
+  - [X] towel
+  - [X] dental floss
+  - [X] vaseline
+- [X] Shoes
+- [ ] cutleries
+- [ ] detergent pods
+
+** TODO Itx Mini PC [0/6] :wish:
+- [ ] RAM
+- [ ] Mobo (Wifi card and BT)
+- [ ] CPU
+- [ ] GPU
+- [ ] SSD
+- [ ] PSU

@@ -1,0 +1,39 @@
+inductive day : Type where
+ | monday
+ | tuesday
+ | wednesday
+ | thursday
+ | friday
+ | saturday
+ | sunday
+
+def next_working_day(d : day) : day := match d with
+  | .monday => .tuesday
+  | .tuesday => .wednesday
+  | .wednesday=> .thursday
+  | .thursday => .friday
+  | .friday => .monday
+  | .saturday => .monday
+  | .sunday => .monday
+
+example : next_working_day (next_working_day day.saturday) = day.tuesday := by rfl
+
+def nand(b1 b2 : Bool) : Bool := ¬(b1 ∧ b2)
+
+example : nand true false = true := by rfl
+example : nand false true = true := by rfl
+example : nand true true = false := by rfl
+example : nand false false = true := by rfl
+
+def and3(b1 b2 b3 : Bool) : Bool := b1 ∧ b2 ∧ b3
+
+example : 3 * 3 = 9 := by rfl
+
+def factorial(n : Nat) : Nat :=
+  match n with
+  | 0 => 1
+  | .succ n => .succ n * factorial n
+
+
+
+

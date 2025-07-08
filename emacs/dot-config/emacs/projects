@@ -1,2 +1,4 @@
 ;;; -*- lisp-data -*-
-(("/home/briancheong/repos/mymysoc/") ("/home/briancheong/dotfiles/"))
+(("/home/briancheong/.config/emacs/elpa/lean4-mode/")
+ ("/home/briancheong/repos/fixed-point/")
+ ("/home/briancheong/repos/mymysoc/") ("/home/briancheong/dotfiles/"))

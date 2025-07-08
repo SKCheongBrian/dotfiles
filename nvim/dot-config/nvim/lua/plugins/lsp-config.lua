@@ -18,6 +18,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
+        automatic_enable = true,
         ensure_installed = { "lua_ls", "jdtls" }
       })
     end
@@ -26,19 +27,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local lspconfig = require("lspconfig")
-      local mason_lspconfig = require("mason-lspconfig")
-      mason_lspconfig.setup_handlers {
-        function(server_name)
-          if server_name == 'jdtls' then
-            return
-          end
-          lspconfig[server_name].setup({
-            capabilities = capabilities
-          })
-        end,
-      }
       require("which-key").add({
         { "<leader>c",  group = "[c]ode" },
         { "<leader>cd", group = "[d]ebug" },

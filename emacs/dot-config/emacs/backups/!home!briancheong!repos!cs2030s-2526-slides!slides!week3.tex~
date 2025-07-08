@@ -1,0 +1,44 @@
+\def\insertweek{3}
+\input{common/preamble.tex}
+\input{common/titlepage.tex}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{About me}
+  \begin{itemize}
+    \item<1->{Brian Cheong}
+    \item<2->{Graduated NUS CS}
+    \item<3->{2nd year PhD student researching in Programming Languages}
+    \item<4->{Third semester teaching CS2030S}
+    \item<5->{Email:} \href{mailto:bskch@nus.edu.sg}{bskch@nus.edu.sg}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Flow of recitations}
+  \begin{itemize}
+    \item<2-> I recommend watching lecture before coming
+    \item<3-> No need to be able to do all the questions
+    \begin{itemize}
+      \item<3-> Just be familiar with the questions
+    \end{itemize}
+    \item<4-> Discussion based
+    \item<5-> Ask questions when unsure
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+\begin{lstlisting}
+class BankAccount {
+}
+\end{lstlisting}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\end{document}

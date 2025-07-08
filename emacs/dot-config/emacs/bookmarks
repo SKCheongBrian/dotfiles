@@ -2,7 +2,43 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("playground"
+(("haskell-mooc"
+ (filename . "~/repos/haskell-mooc/")
+ (front-context-string . "CONTRIBUTING.md\n")
+ (rear-context-string . "07 Jul  6 08:35 ")
+ (position . 226)
+ (last-modified 26730 38960 246792 539000))
+("repos"
+ (filename . "~/repos/")
+ (front-context-string . "cs2030s-2526-sli")
+ (rear-context-string . "96 Jul  5 21:05 ")
+ (position . 207)
+ (last-modified 26730 38953 715009 199000))
+("inbox"
+ (filename . "~/org/agenda/inbox.org")
+ (front-context-string . "* Tasks\n** TODO ")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26703 29792 151246 512000))
+("um"
+ (filename . "~/repos/qe/um/")
+ (front-context-string . "figs\n  -rw-rw-r-")
+ (rear-context-string . "96 May 19 14:27 ")
+ (position . 216)
+ (last-modified 26685 34239 151684 931000))
+("ndll"
+ (filename . "~/repos/qe/ndll/")
+ (front-context-string . "auto\n  drwxrwxr-")
+ (rear-context-string . "96 Jun  2 18:41 ")
+ (position . 218)
+ (last-modified 26685 34231 664950 22000))
+("qe"
+ (filename . "~/repos/qe/")
+ (front-context-string . ".git\n  drwxrwxr-")
+ (rear-context-string . "96 Jun  2 14:26 ")
+ (position . 210)
+ (last-modified 26685 34226 905828 112000))
+("playground"
  (filename . "~/playground/")
  (front-context-string . "B$A.class\n  -rw-")
  (rear-context-string . "95 Apr 24 14:21 ")

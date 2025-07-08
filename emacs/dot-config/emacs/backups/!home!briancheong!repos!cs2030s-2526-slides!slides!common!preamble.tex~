@@ -1,0 +1,10 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{moloch}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsmath,amssymb}
+
+

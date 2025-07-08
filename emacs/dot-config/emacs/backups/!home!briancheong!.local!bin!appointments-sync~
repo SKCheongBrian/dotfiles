@@ -1,0 +1,11 @@
+#!/bin/bash
+
+WGET=/usr/bin/wget
+ICS2ORG=~/.local/bin/ical2org
+ICSFILE=~/calendar/appointments.ics
+ORGFILE=~/org/agenda/appointments.org
+URL=https://calendar.google.com/calendar/ical/3a46f53a0303c2a70787c81e7a1d0bdaed5b33867847d9559e11de5d7d0fe9b9%40group.calendar.google.com/private-ab5d022f41ac2f432161c008cdb44d1f/basic.ics
+CALENDAR='appointments'
+
+$WGET -O $ICSFILE $URL
+$ICS2ORG < $ICSFILE > $ORGFILE

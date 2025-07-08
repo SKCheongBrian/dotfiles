@@ -21,10 +21,62 @@
 		    :family "Aporetic Sans Mono"
 		    :height 140)
 
-;; Setting up theme to something nice
-(use-package acme-theme
-  :config
-  (load-theme 'acme t))
+;; Setting up theme to something nice (In the end nothing is set)
+(use-package acme-theme)
+(use-package nordic-night-theme)
+(use-package modus-themes)
+
+;; Telegram for fun
+(use-package telega)
+
+;; (use-package spacious-padding
+;;   :config
+;;   (setq spacious-padding-subtle-frame-lines
+;; 	'(:mode-line-active error))
+;;   (setq x-underline-at-descent-line t)
+
+;;   (spacious-padding-mode 1))
+
+(global-unset-key (kbd "C-z"))
+;; (use-package evil
+;;   :init
+;;   (setq evil-undo-system 'undo-fu)
+;;   (setq evil-want-integration t) ;; needed by evil-collection
+;;   (setq evil-want-keybinding nil)
+;;   (setq evil-want-C-u-scroll t) ;; allow C-u to scroll up
+;;   :config
+;;   (evil-mode 1))
+
+;; (use-package evil-collection
+;;   :after evil
+;;   :config
+;;   (evil-collection-init))
+
+;; (use-package evil-surround
+;;   :after evil
+;;   :config
+;;   (global-evil-surround-mode 1))
+
+;; (use-package evil-commentary
+;;   :after evil
+;;   :config
+;;   (evil-commentary-mode))
+
+;; (use-package evil-nerd-commenter
+;;   :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+
+;; (use-package evil-leader
+;;   :after evil
+;;   :config
+;;   (global-evil-leader-mode)
+;;   (evil-leader/set-leader "<SPC>")
+;;   (evil-leader/set-key
+;;     "f" 'find-file
+;;     "b" 'consult-buffer
+;;     "k" 'kill-buffer
+;;     "g" 'magit-status
+;;     "p" 'project-switch-project))
+
 
 ;; Store Emacs customizations in a separate file so as to not pollute this one
 (setq custom-file (expand-file-name "custom-vars.el" user-emacs-directory))
@@ -49,8 +101,10 @@
 (setq inhibit-startup-screen t)
 (global-display-line-numbers-mode t)
 
-;; Theme
-;; TODO!
+(use-package nyan-mode
+  :config
+  (setq nyan-animate-nyancat t)
+  (nyan-mode))
 
 ;; Completion system
 (use-package vertico
@@ -91,6 +145,16 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
+(use-package paredit
+  :hook
+  (emacs-lisp-mode . enable-paredit-mode)
+  (lisp-mode . enable-paredit-mode)
+  (lisp-interaction-mode . enable-paredit-mode)
+  (scheme-mode . enable-paredit-mode))
+
+(use-package expand-region
+  :bind (("C-=" . 'er/expand-region)))
+
 ;; project management
 (use-package project
   :config
@@ -107,7 +171,9 @@
 (use-package which-key
   :config
   (which-key-mode)
-  (which-key-setup-side-window-bottom))
+  (which-key-setup-side-window-bottom)
+  (which-key-add-key-based-replacements
+    "C-c p" "Project"))
 
 ;;Corfu: popup completion
 (use-package corfu
@@ -121,21 +187,20 @@
 (use-package cape
   :init
   ;; Add useful default sources
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)     ;; dynamic abbrev (buffer words)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)     ;; Emacs keywords
-  (add-to-list 'completion-at-point-functions #'cape-symbol)      ;; Lisp symbols
-  (add-to-list 'completion-at-point-functions #'cape-elisp-block) ;; Elisp in org-mode blocks
-  (add-to-list 'completion-at-point-functions #'cape-file)        ;; file paths
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)               ;; dynamic abbrev (buffer words)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)               ;; Emacs keywords
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block)           ;; Elisp in org-mode blocks
+  (add-to-list 'completion-at-point-functions #'cape-file)                  ;; file paths
   (add-to-list 'completion-at-point-functions #'cape-tex)
-  (add-to-list 'completion-at-point-functions #'lsp-completion-at-point))        ;; LaTeX commands
+  (add-to-list 'completion-at-point-functions #'lsp-completion-at-point))   ;; LaTeX commands
 
 ;; Modeline
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :custom
-  (doom-modeline-icon t)  ;; needs all-the-icons
-  (doom-modeline-major-mode-icon t)
-  (doom-modeline-buffer-encoding nil)) ;; turn off U/UTF-8 thing if you dislike 
+;; (use-package doom-modeline
+;;   :init (doom-modeline-mode 1)
+;;   :custom
+;;   (doom-modeline-icon t)  ;; needs all-the-icons
+;;   (doom-modeline-major-mode-icon t)
+;;   (doom-modeline-buffer-encoding nil)) ;; turn off U/UTF-8 thing if you dislike 
 
 ;;; Org stuff
 ;; Org mode for notes
@@ -166,13 +231,9 @@
         (800 1000 1200 1400 1600 1800 2000)
         "......" "----------------"))
 
-
 ;; Magit for Git integration
 (use-package magit
   :bind (("C-x g" . magit-status))) ;; Open Magit status with "C-x g"
-
-;; haskell
-(use-package haskell-mode)
 
 ;; markdown
 (use-package markdown-mode)
@@ -199,7 +260,8 @@
 
 ;; Lsp-mode
 (use-package lsp-mode
-  :init (setq lsp-keymap-prefix "C-c l")
+  :init
+  (setq lsp-keymap-prefix "C-c l")
   :bind (:map lsp-mode-map
 	      ("C-c r" . lsp-rename)
 	      ("C-c a" . lsp-execute-code-action)
@@ -217,6 +279,7 @@
 	 (python-mode . lsp-deferred)
 	 (rust-ts-mode . lsp-deferred)
 	 (haskell-mode . lsp-deferred)
+	 (haskell-literate-mode . lsp-deferred)
 	 (c-mode . lsp-deferred)
 	 (c++-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
@@ -225,6 +288,11 @@
 	lsp-completion-provider :none)
   (lsp-enable-which-key-integration) ;; Because I use Corfu
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode)))
+
+(use-package lsp-haskell
+  :after lsp-mode
+  :config
+  (setq lsp-haskell-server-path "haskell-language-server-wrapper"))
 
 (use-package lsp-ui
   :after lsp-mode
@@ -258,24 +326,46 @@
 
 (use-package tex
   :ensure auctex
-  :defer t
-  :hook ((LaTeX-mode . visual-line-mode)
-         (LaTeX-mode . flyspell-mode)
-         (LaTeX-mode . LaTeX-math-mode))
+  :hook ((LaTeX-mode . LaTeX-math-mode)
+         (LaTeX-mode . turn-on-reftex)
+         (LaTeX-mode . TeX-source-correlate-mode))
   :config
   (setq TeX-auto-save t
         TeX-parse-self t
         TeX-save-query nil
-        TeX-PDF-mode t)
+        TeX-PDF-mode t
+        TeX-command-default "LatexMk")
 
-  ;; Use latexmk by default
-  (setq TeX-command-default "LatexMk")
   (add-to-list 'TeX-command-list
                '("LatexMk" "latexmk -pdf %s" TeX-run-TeX nil t
                  :help "Run LatexMk"))
 
-  ;; Open PDF with GNOME document viewer
-  (setq TeX-view-program-selection '((output-pdf "GNOME Viewer"))
-        TeX-view-program-list
-        '(("GNOME Viewer" "xdg-open %o"))))
+  ;; Use Evince for PDF viewing
+  (setq TeX-view-program-selection '((output-pdf "Evince")))
+  (setq TeX-source-correlate-start-server t))
 
+(defun my/auto-compile-latex ()
+  (when (eq major-mode 'LaTeX-mode)
+    (TeX-command "LatexMk" 'TeX-master-file -1)))
+
+(add-hook 'after-save-hook #'my/auto-compile-latex)
+
+
+(use-package dash)
+(use-package magit-section)
+(use-package lean4-mode
+  :commands lean4-mode
+  :vc (:url "https://github.com/leanprover-community/lean4-mode.git"
+       :rev :last-release
+       ;; Or, if you prefer the bleeding edge version of Lean4-Mode:
+       ;; :rev :newest
+       ))
+
+(defun my/apply-ansi-colors ()
+  (ansi-color-apply-on-region (point-min) (point-max)))
+
+(add-hook 'compilation-filter-hook 'my/apply-ansi-colors)
+
+
+(load-file (let ((coding-system-for-read 'utf-8))
+             (shell-command-to-string "agda-mode locate")))
