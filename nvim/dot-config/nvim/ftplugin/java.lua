@@ -5,9 +5,9 @@ local config = {
     bundles = { vim.fn.glob("/Users/briancheong/.config/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.50.0.jar", 1) },
   },
 }
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 require("jdtls").setup_dap()
 require("jdtls").start_or_attach(config)
 

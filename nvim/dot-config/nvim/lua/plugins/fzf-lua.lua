@@ -18,7 +18,7 @@ return {
     { 'gr',         function() FzfLua.lsp_references() end,        desc = "Go to [r]eferences",     nowait = true },
     { 'gI',         function() FzfLua.lsp_implementations() end,   desc = '[G]oto [I]mplementation' },
     { "gy",         function() FzfLua.lsp_typedefs() end,          desc = "Goto T[y]pe Definition" },
-    { '<leader>ca', function() FzfLua.lsp_code_action() end,       desc = "[C]ode [A]ction" },
+    { '<leader>ca', function() FzfLua.lsp_code_actions() end,        desc = "[C]ode [A]ction" },
     -- Search
     { "<leader>sm", function() FzfLua.marks() end,                 desc = "Marks" },
     { "<leader>sd", function() FzfLua.diagnostics_document() end,  desc = "Diagnostics" },

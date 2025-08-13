@@ -8,10 +8,10 @@
 --   end,
 -- }
 return {
-    'webhooked/kanso.nvim',
+    'rebelot/kanagawa.nvim',
     lazy = false,
     priority = 1000,
     config = function ()
-        vim.cmd.colorscheme('kanso-zen')
+        vim.cmd.colorscheme('kanagawa-dragon')
     end
 }

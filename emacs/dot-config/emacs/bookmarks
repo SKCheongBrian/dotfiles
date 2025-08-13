@@ -2,7 +2,37 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("haskell-mooc"
+(("calendar"
+	(filename . "~/org/agenda/")
+	(front-context-string . "appointments.org")
+	(rear-context-string . "24 11 Aug 09:36 ")
+	(position . 204)
+	(last-modified 26777 18754 694688 0))
+("current-teaching"
+ (filename . "~/Documents/phd/GT/CS2030S-2526-s1/")
+ (front-context-string . "admin\n  drwxr-xr")
+ (rear-context-string . "64 Jul 31 22:59 ")
+ (position . 214)
+ (last-modified 26764 10356 11162 0))
+("teach-current"
+ (filename . "~/Documents/phd/GT/CS2030S-2526-s1/")
+ (front-context-string . "admin\n  drwxrwxr")
+ (rear-context-string . "96 Jun  9 16:26 ")
+ (position . 234)
+ (last-modified 26753 42550 530134 587000))
+("init.el"
+ (filename . "~/dotfiles/emacs/dot-config/emacs/init.el")
+ (front-context-string . ";; init.el\n\n;; S")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26746 6996 527739 696000))
+("hyprland"
+ (filename . "~/.config/hypr/hyprland.conf")
+ (front-context-string . "monitor=DP-1, pr")
+ (rear-context-string . "rred, auto, 1.5\n")
+ (position . 897)
+ (last-modified 26739 57436 52887 218000))
+("haskell-mooc"
  (filename . "~/repos/haskell-mooc/")
  (front-context-string . "CONTRIBUTING.md\n")
  (rear-context-string . "07 Jul  6 08:35 ")
