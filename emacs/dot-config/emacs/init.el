@@ -36,7 +36,7 @@
 
 (set-face-attribute 'default nil
 										:family "Google Sans Code"
-										:height 150)
+										:height 160)
 
 ;; (set-face-attribute 'default nil
 ;; 					:family "Envy Code R"
@@ -63,10 +63,11 @@
 ;; Setting up theme to something nice
 (use-package acme-theme)
 (use-package nordic-night-theme)
-(use-package modus-themes
-	:config
-	(modus-themes-load-theme 'modus-operandi))
+(use-package modus-themes)
 (use-package standard-themes)
+(use-package ef-themes
+	:config
+	(ef-themes-select 'ef-symbiosis))
 ;; (use-package color-theme-sanityinc-tomorrow
 ;;   :config
 ;;   (load-theme 'sanityinc-tomorrow- t))
