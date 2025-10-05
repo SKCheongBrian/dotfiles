@@ -26,6 +26,9 @@
   (package-install 'use-package))
 (require 'use-package)
 
+;; load treesitter grammars
+(add-to-list 'treesit-extra-load-path "~/dotfiles/emacs/dot-config/emacs/tree-sitter/")
+
 ;; Ensure that packages are always installed
 (setq use-package-always-ensure t)
 
@@ -36,7 +39,7 @@
 
 (set-face-attribute 'default nil
 										:family "Google Sans Code"
-										:height 160)
+										:height 140)
 
 ;; (set-face-attribute 'default nil
 ;; 					:family "Envy Code R"
@@ -60,17 +63,17 @@
   ;; useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p))
 
+(use-package tree-sitter-langs)
+
 ;; Setting up theme to something nice
-(use-package acme-theme)
+(use-package acme-theme
+	:config
+	(load-theme 'acme t))
 (use-package nordic-night-theme)
 (use-package modus-themes)
 (use-package standard-themes)
-(use-package ef-themes
-	:config
-	(ef-themes-select 'ef-symbiosis))
-;; (use-package color-theme-sanityinc-tomorrow
-;;   :config
-;;   (load-theme 'sanityinc-tomorrow- t))
+(use-package ef-themes)
+(use-package color-theme-sanityinc-tomorrow)
 
 ;; Transparent background
 ;; (set-frame-parameter nil 'alpha-background 80)
@@ -83,19 +86,22 @@
 ;; Telegram for fun
 ;; (use-package telega)
 
-(use-package spacious-padding
-  :config
-  (setq spacious-padding-subtle-frame-lines
-	'(:mode-line-active error))
-  (setq x-underline-at-descent-line t)
-	(setq mode-line-right-align-edge 'right-margin)
-  (spacious-padding-mode 1))
+;; (use-package spacious-padding
+;;   :config
+;;   (setq spacious-padding-subtle-frame-lines
+;; 	'(:mode-line-active error))
+;;   (setq x-underline-at-descent-line t)
+;; 	(setq mode-line-right-align-edge 'right-margin)
+;;   (spacious-padding-mode 1))
 
 ;; Store Emacs customizations in a separate file so as to not pollute this one
 (setq custom-file (expand-file-name "custom-vars.el" user-emacs-directory))
 
 ;; Store backups and auto-saves in another place.
 (setq backup-directory-alist `(("." . "~/.config/emacs/backups")))
+(setq delete-old-versions -1)
+(setq version-control t)
+(setq vc-make-backup-files t)
 (setq auto-save-file-name-transforms `((".*" "~/.config/emacs/auto-saves/" t)))
 (setq auto-save-list-file-prefix "~/.config/emacs/auto-saves/.saves-")
 
@@ -113,6 +119,35 @@
 (scroll-bar-mode -1)
 (setq inhibit-startup-screen t)
 (global-display-line-numbers-mode t)
+(blink-cursor-mode -1)
+(column-number-mode 1)
+(global-goto-address-mode 1)
+(delete-selection-mode 1)
+
+(recentf-mode 1)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+(set-keyboard-coding-system 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+
+;; dired
+(setq dired-listing-switches "-alt --dired --group-directories-first -h -G")
+
+;; searching
+(setq case-fold-search t)
+
+(setq sentence-end-double-space nil)
+
+;; save history
+(savehist-mode 1)
+(setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+
+(setq initial-frame-alist '((top . 1)
+														(left . 0)
+														(width . 240)
+														(height . 100)))
 
 
 ;; (setq visible-bell nil)
@@ -260,6 +295,19 @@
 ;; Org mode for notes
 (global-set-key (kbd "C-c a") 'org-agenda)
 
+;; org roam
+(use-package org-roam
+	:config
+	(setq org-roam-directory (file-truename "~/org/roam")))
+
+(use-package org-roam-ui
+	:after (org-roam)
+	:config
+	(setq org-roam-ui-sync-theme t
+				org-roam-ui-follow t
+				org-roam-ui-update-on-save t
+				org-roam-ui-open-on-start t))
+
 ;; Capture templates
 (global-set-key (kbd "C-c c") 'org-capture)
 (setq org-capture-templates
@@ -372,7 +420,6 @@
 
 ;; Eglot (changing to lsp-mode for a more complete lsp experience)
 (use-package eglot
-  :after (eglot-java)
   :defer t
   :hook ((go-mode . eglot-ensure)
 		 (java-mode . eglot-ensure)
@@ -407,7 +454,8 @@
   :ensure t
   :hook (eglot-managed-mode . yas-minor-mode))
 
-(use-package eglot-java)
+(use-package eglot-java
+	:after (eglot))
 
 (use-package haskell-mode)
 
@@ -482,12 +530,16 @@
 (add-to-list 'auto-mode-alist '("\\.tex\\'" . LaTeX-mode))
 (setq LaTeX-item-indent 0)
 (use-package latex-preview-pane)
+(use-package adaptive-wrap)
+(use-package pdf-tools)
 
 (use-package tex
   :ensure auctex
   :hook ((LaTeX-mode . LaTeX-math-mode)
          (LaTeX-mode . turn-on-reftex)
-         (LaTeX-mode . TeX-source-correlate-mode))
+         (LaTeX-mode . TeX-source-correlate-mode)
+				 (LaTeX-mode . visual-line-mode)
+				 (LaTeX-mode . adaptive-wrap-prefix-mode))
   :config
   (setq TeX-auto-save t
         TeX-parse-self t

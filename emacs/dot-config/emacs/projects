@@ -1,5 +1,7 @@
 ;;; -*- lisp-data -*-
-(("/home/briancheong/.config/emacs/elpa/typst-ts-mode/")
+(("/home/brian/repos/personal-website/")
+ ("/home/brian/.config/emacs/elpa/lean4-mode/")
+ ("/home/briancheong/.config/emacs/elpa/typst-ts-mode/")
  ("/home/briancheong/repos/Lang/")
  ("/home/briancheong/repos/ll-generator/")
  ("/home/briancheong/repos/elm-soc/")
