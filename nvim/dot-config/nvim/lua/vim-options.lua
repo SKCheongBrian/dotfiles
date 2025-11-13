@@ -14,6 +14,8 @@ vim.opt.wrap = false
 vim.opt.formatoptions:remove { "t" }
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', {desc = 'Clear highlighting'})
 
+vim.opt.termguicolors = true
+
 -- window stuff
 vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
