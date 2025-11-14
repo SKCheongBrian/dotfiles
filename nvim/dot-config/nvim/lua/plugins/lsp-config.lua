@@ -3,7 +3,7 @@ return {
     -- for haskell
     {
         'mrcjkb/haskell-tools.nvim',
-        version = '^4', -- Recommended
+        version = '^6', -- Recommended
         lazy = false,
     },
     -- plugin to help manage and install lsp
@@ -24,7 +24,7 @@ return {
                         "hls",
                     },
                 },
-                ensure_installed = { "lua_ls", "jdtls" }
+                ensure_installed = { "lua_ls" }
             })
         end
     },

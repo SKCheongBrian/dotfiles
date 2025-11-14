@@ -13,6 +13,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
--- require("colors")
 require("lazy").setup("plugins")
 require("fzf-lua").register_ui_select()
