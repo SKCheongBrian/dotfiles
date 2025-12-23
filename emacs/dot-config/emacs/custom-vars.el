@@ -19,11 +19,11 @@
 								embark-consult evil-collection evil-commentary
 								evil-leader evil-nerd-commenter evil-surround
 								exec-path-from-shell expand-region flycheck
-								haskell-mode latex-preview-pane lean4-mode lsp-haskell
-								lsp-java lsp-ui magit marginalia minions
-								mode-line-bell modus-themes moody nordic-night-theme
-								nyan-mode oauth2 orderless org-gcal org-roam
-								org-roam-ui paredit pdf-tools rainbow-mode
+								haskell-mode haskell-ts-mode latex-preview-pane
+								lean4-mode lsp-haskell lsp-java lsp-ui magit
+								marginalia minions mode-line-bell modus-themes moody
+								nordic-night-theme nyan-mode oauth2 orderless org-gcal
+								org-roam org-roam-ui paredit pdf-tools rainbow-mode
 								spacious-padding standard-themes telega typst-ts-mode
 								undo-fu vertico yasnippet))
  '(package-vc-selected-packages

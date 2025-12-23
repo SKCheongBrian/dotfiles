@@ -1,0 +1,7 @@
+emacs/dot-config/emacs/auto-saves/*
+emacs/dot-config/emacs/backups/*
+emacs/dot-config/emacs/eln-cache/*
+emacs/dot-config/emacs/elpa/*
+emacs/dot-config/emacs/eshell/*
+emacs/dot-config/emacs/history
+emacs/dot-config/emacs/tree-sitter/*

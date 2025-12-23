@@ -28,6 +28,13 @@
 
 ;; load treesitter grammars
 (add-to-list 'treesit-extra-load-path "~/dotfiles/emacs/dot-config/emacs/tree-sitter/")
+;; Ensure that the treesitter modes are activated
+(setq major-mode-remap-alist
+      '((python-mode . python-ts-mode)
+        (js-mode . js-ts-mode)
+        (javascript-mode . js-ts-mode)
+        (java-mode . java-ts-mode)
+				(zig-mode . zig-ts-mode)))
 
 ;; Ensure that packages are always installed
 (setq use-package-always-ensure t)
@@ -38,7 +45,7 @@
 ;; 					:height 160)
 
 (set-face-attribute 'default nil
-										:family "Google Sans Code"
+										:family "JetBrainsMonoNerdFont"
 										:height 140)
 
 ;; (set-face-attribute 'default nil
@@ -66,11 +73,11 @@
 (use-package tree-sitter-langs)
 
 ;; Setting up theme to something nice
-(use-package acme-theme
-	:config
-	(load-theme 'acme t))
+(use-package acme-theme)
 (use-package nordic-night-theme)
-(use-package modus-themes)
+(use-package modus-themes
+	:config
+	(load-theme 'modus-vivendi :no-confirm))
 (use-package standard-themes)
 (use-package ef-themes)
 (use-package color-theme-sanityinc-tomorrow)
@@ -458,6 +465,7 @@
 	:after (eglot))
 
 (use-package haskell-mode)
+
 
 ;; Lsp-mode
 ;; (use-package lsp-mode
