@@ -45,8 +45,8 @@
 ;; 					:height 160)
 
 (set-face-attribute 'default nil
-										:family "JetBrainsMonoNerdFont"
-										:height 140)
+										:family "Aporetic Sans Mono"
+										:height 160)
 
 ;; (set-face-attribute 'default nil
 ;; 					:family "Envy Code R"
@@ -75,12 +75,15 @@
 ;; Setting up theme to something nice
 (use-package acme-theme)
 (use-package nordic-night-theme)
-(use-package modus-themes
-	:config
-	(load-theme 'modus-vivendi :no-confirm))
+(use-package color-theme-modern)
+(use-package modus-themes)
 (use-package standard-themes)
-(use-package ef-themes)
+(use-package ef-themes
+	:config
+	(ef-themes-select 'ef-dark))
+(use-package doric-themes)
 (use-package color-theme-sanityinc-tomorrow)
+(use-package gruber-darker-theme)
 
 ;; Transparent background
 ;; (set-frame-parameter nil 'alpha-background 80)
@@ -163,13 +166,6 @@
 	:config
 	(mode-line-bell-mode))
 
-;; No explanation needed
-(use-package nyan-mode
-  :config
-  (setq nyan-animate-nyancat t)
-	(setq nyan-wavy-trail t)
-  (nyan-mode))
-
 ;; Completion system
 (use-package vertico
   :init
@@ -199,23 +195,47 @@
   (set-mark-command nil)
   (move-end-of-line nil))
 
+(defun brian/select-word ()
+	(interactive)
+	(let ((bounds (bounds-of-thing-at-point 'word)))
+		(when bounds
+			(unless (= (point) (car bounds))
+				(backward-word))))
+	(set-mark-command nil)
+	(forward-word))
+
 (defun brian/kill-line ()
   (interactive)
   (move-beginning-of-line nil)
   (kill-line)
   (kill-line))
 
+(defun brian/duplicate-line ()
+	(interactive)
+	(let ((line (buffer-substring (line-beginning-position) (line-end-position)))
+				(pos (point))
+				(col (current-column)))
+		(forward-line 1)
+		(insert line "\n")
+		(forward-line -1)
+		(move-to-column col)))
+
 (defvar-keymap brians-prefixmap
   :doc "My prefix map."
   "s" #'consult-line
   "C-s" #'consult-line
+	"w" #'brian/select-word
+	"C-w" #'brian/select-word
   "l" #'brian/highlight-line
   "C-l" #'brian/highlight-line
   "k" #'brian/kill-line
-  "C-k" #'brian/kill-line)
+  "C-k" #'brian/kill-line
+	"j" #'avy-goto-char
+	"C-j" #'avy-goto-char)
 
-(keymap-set global-map "C-z" brians-prefixmap)
+(keymap-set global-map "C-q" brians-prefixmap)
 (keymap-set global-map "M-o" 'other-window)
+(keymap-set global-map "C-," 'brian/duplicate-line)
 
 ;; Consult for powerful search commands
 (use-package consult
@@ -356,6 +376,8 @@
 	((org-agenda-mode . (lambda () (org-gcal-sync)))
 	 (org-capture-mode . (lambda () (org-gcal-sync)))))
 
+(use-package notmuch)
+
 (use-package denote
   :ensure t
   :hook
@@ -428,34 +450,41 @@
 ;; Eglot (changing to lsp-mode for a more complete lsp experience)
 (use-package eglot
   :defer t
-  :hook ((go-mode . eglot-ensure)
-		 (java-mode . eglot-ensure)
-		 (js-mode . eglot-ensure)
-		 (typescript-mode . eglot-ensure)
-		 (elm-mode . eglot-ensure)
-		 (tsx-ts-mode . eglot-ensure)
-		 (typst-ts-mode . eglot-ensure)
-		 (web-mode . eglot-ensure)
-		 (python-mode . eglot-ensure)
-		 (haskell-mode . eglot-ensure)
-		 (rust-mode . eglot-ensure)
-		 (c-mode . eglot-ensure)
-		 (c++-mode . eglot-ensure))
+  :hook
+  ((go-mode . eglot-ensure)
+   (java-mode . eglot-ensure)
+   (js-mode . eglot-ensure)
+   (typescript-mode . eglot-ensure)
+   (elm-mode . eglot-ensure)
+   (tsx-ts-mode . eglot-ensure)
+   (typst-ts-mode . eglot-ensure)
+   (web-mode . eglot-ensure)
+   (python-mode . eglot-ensure)
+   (haskell-mode . eglot-ensure)
+   (rust-mode . eglot-ensure)
+   (c-mode . eglot-ensure)
+   (c++-mode . eglot-ensure)
+	 (astro-mode . eglot-ensure)
+   (eglot-managed-mode . brian/eglot-haskell-settings))
+
   :bind
   (("C-c l r" . eglot-rename)
    ("C-c l a" . eglot-code-actions))
+
   :config
-  (setq-default eglot-workspace-configuration
-                '((haskell
-                   (plugin
-                    (stan
-                     (globalOn . :json-false))))))  ;; disable stan
   (add-to-list 'eglot-server-programs
-			   '(typst-ts-mode . ("tinymist")))
-  :custom
-  (eglot-autoshutdown t) ;; shutdown language server after closing last file
-  (eglot-confirm-server-initiated-edits nil) ;; allow edits without confirmation
-  )
+               '(typst-ts-mode . ("tinymist")))
+	(add-to-list 'eglot-server-programs
+							 '(astro-mode . ("astro-ls" "--stdio"
+															 :initializationOptions
+															 (:typescript (:tsdk "./node_modules/typescript/lib"))))))
+
+(defun brian/eglot-haskell-settings ()
+  (when (derived-mode-p 'haskell-mode)
+    (setq-local eglot-workspace-configuration
+                '(:haskell
+                  (:formattingProvider "ormolu")))))
+
 
 (use-package yasnippet
   :ensure t
@@ -464,7 +493,19 @@
 (use-package eglot-java
 	:after (eglot))
 
-(use-package haskell-mode)
+(use-package haskell-mode
+	:ensure t)
+
+(use-package web-mode
+	:ensure t)
+
+(define-derived-mode astro-mode web-mode "astro")
+(setq auto-mode-alist
+      (append '((".*\\.astro\\'" . astro-mode))
+              auto-mode-alist))
+
+
+
 
 
 ;; Lsp-mode
