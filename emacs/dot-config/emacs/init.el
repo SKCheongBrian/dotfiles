@@ -46,7 +46,7 @@
 
 (set-face-attribute 'default nil
 										:family "Aporetic Sans Mono"
-										:height 160)
+										:height 140)
 
 ;; (set-face-attribute 'default nil
 ;; 					:family "Envy Code R"
@@ -58,7 +58,6 @@
 
 
 (use-package emacs
-
   :custom
   (tab-always-indent t)
   (text-mode-ispell-word-completion nil)
@@ -78,12 +77,13 @@
 (use-package color-theme-modern)
 (use-package modus-themes)
 (use-package standard-themes)
-(use-package ef-themes
-	:config
-	(ef-themes-select 'ef-dark))
+(use-package ef-themes)
 (use-package doric-themes)
 (use-package color-theme-sanityinc-tomorrow)
 (use-package gruber-darker-theme)
+(use-package naysayer-theme
+	:config
+	(load-theme 'naysayer t))
 
 ;; Transparent background
 ;; (set-frame-parameter nil 'alpha-background 80)
@@ -143,7 +143,7 @@
 (set-terminal-coding-system 'utf-8-unix)
 
 ;; dired
-(setq dired-listing-switches "-alt --dired --group-directories-first -h -G")
+(setq dired-listing-switches "-lahF --group-directories-first")
 
 ;; searching
 (setq case-fold-search t)
@@ -446,6 +446,18 @@
 
 ;; Typst
 (use-package typst-ts-mode)
+(use-package typst-preview
+	:init
+	(setq typst-preview-autostart t
+				typst-preview-open-browser-automatically t)
+	:custom
+	(typst-preview-invert-colors "never")
+	(typst-preview-executable "tinymist")
+	(typst-preview-partial-rendering t)
+
+	:config
+	(define-key typst-preview-mode-map (kbd "C-c C-j") 'typst-preview-send-position))
+
 
 ;; Eglot (changing to lsp-mode for a more complete lsp experience)
 (use-package eglot
@@ -499,9 +511,24 @@
 (use-package web-mode
 	:ensure t)
 
+(defun brian/astro-indent-2 ()
+  (setq-local indent-tabs-mode nil)
+  (setq-local tab-width 2)
+  ;; web-mode indents (astro-mode inherits these)
+  (setq-local web-mode-markup-indent-offset 2)
+  (setq-local web-mode-css-indent-offset 2)
+  (setq-local web-mode-code-indent-offset 2)
+  ;; optional: also align HTML attributes with 2
+  (setq-local web-mode-attr-indent-offset 2))
+
+(add-hook 'astro-mode-hook #'brian/astro-indent-2)
+
+
 (define-derived-mode astro-mode web-mode "astro")
 (setq auto-mode-alist
-      (append '((".*\\.astro\\'" . astro-mode))
+      (append '((".*\\.astro\\'" . astro-mode)
+								(".*\\.ts\\'" . typescript-ts-mode)
+								(".*\\.tsx\\'" . typescript-ts-mode))
               auto-mode-alist))
 
 
@@ -563,6 +590,8 @@
 
 (use-package flycheck)
 
+(use-package dockerfile-mode)
+
 ;; (use-package lsp-java
 ;;   :after lsp
 ;;   :config (add-hook 'java-mode-hook #'lsp))
@@ -575,43 +604,43 @@
   :args `("--stdin-filepath" ,buffer-file-name)
   :group 'prettier)
 
-(use-package auctex)
-(add-to-list 'auto-mode-alist '("\\.tex\\'" . LaTeX-mode))
-(setq LaTeX-item-indent 0)
-(use-package latex-preview-pane)
-(use-package adaptive-wrap)
-(use-package pdf-tools)
-
+;; AUCTeX
 (use-package tex
   :ensure auctex
   :hook ((LaTeX-mode . LaTeX-math-mode)
          (LaTeX-mode . turn-on-reftex)
          (LaTeX-mode . TeX-source-correlate-mode)
-				 (LaTeX-mode . visual-line-mode)
-				 (LaTeX-mode . adaptive-wrap-prefix-mode))
+         (LaTeX-mode . visual-line-mode)
+         (LaTeX-mode . adaptive-wrap-prefix-mode))
   :config
   (setq TeX-auto-save t
         TeX-parse-self t
         TeX-save-query nil
         TeX-PDF-mode t
-        TeX-command-default "LatexMk")
+        TeX-command-default "LatexMk"
 
+        ;; SyncTeX
+        TeX-source-correlate-method 'synctex
+        TeX-source-correlate-start-server t)
+
+  ;; latexmk MUST generate synctex data
   (add-to-list 'TeX-command-list
-               '("LatexMk" "latexmk -pdf %s" TeX-run-TeX nil t
-                 :help "Run LatexMk"))
+               '("LatexMk"
+                 "latexmk -pdf -synctex=1 -interaction=nonstopmode -file-line-error %s"
+                 TeX-run-TeX nil t
+                 :help "Run LatexMk (PDF + SyncTeX)"))
 
-  ;; Use Evince for PDF viewing
-	(setq TeX-view-program-list
-				'(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline %q")))
-	(setq TeX-view-program-selection '((output-pdf "Skim")))
-  (setq TeX-source-correlate-start-server t))
+  ;; Okular forward-search needs an absolute master directory in the src: fragment
+  ;; (This is the “TeX Live 2011+” behavior many people trip over.)
+  ;; See: okular --unique %o#src:%n%(masterdir)./%b :contentReference[oaicite:1]{index=1}
+  (push '("%(masterdir)" (lambda () (file-truename (TeX-master-directory))))
+        TeX-expand-list)
 
-(defun my/auto-compile-latex ()
-  (when (eq major-mode 'LaTeX-mode)
-    (TeX-command "LatexMk" 'TeX-master-file -1)))
+  (add-to-list 'TeX-view-program-list
+               '("Okular" "okular --unique %o#src:%n%(masterdir)./%b"))
 
-(add-hook 'after-save-hook #'my/auto-compile-latex)
-
+  ;; Actually select Okular (not Skim)
+  (setq TeX-view-program-selection '((output-pdf "Okular"))))
 
 (use-package dash)
 (use-package magit-section)

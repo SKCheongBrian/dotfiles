@@ -2,12 +2,18 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("calendar"
-	(filename . "~/org/agenda/")
-	(front-context-string . "appointments.org")
-	(rear-context-string . "24 11 Aug 09:36 ")
-	(position . 204)
-	(last-modified 26777 18754 694688 0))
+(("baby-pdf"
+ (filename . "~/projects/baby-pdf/")
+ (front-context-string . "main.py\n  -rw-r-")
+ (rear-context-string . "4K Dec 23 14:37 ")
+ (position . 833)
+ (last-modified 26973 57546 888539 102000))
+("calendar"
+ (filename . "~/org/agenda/")
+ (front-context-string . "appointments.org")
+ (rear-context-string . "24 11 Aug 09:36 ")
+ (position . 204)
+ (last-modified 26777 18754 694688 0))
 ("current-teaching"
  (filename . "~/Documents/phd/GT/CS2030S-2526-s1/")
  (front-context-string . "admin\n  drwxr-xr")
