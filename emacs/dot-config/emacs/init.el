@@ -45,8 +45,8 @@
 ;; 					:height 160)
 
 (set-face-attribute 'default nil
-										:family "Aporetic Sans Mono"
-										:height 140)
+										:family "Aporetic Serif Mono"
+										:height 120)
 
 ;; (set-face-attribute 'default nil
 ;; 					:family "Envy Code R"
@@ -458,6 +458,28 @@
 	:config
 	(define-key typst-preview-mode-map (kbd "C-c C-j") 'typst-preview-send-position))
 
+;; GPT stuff
+(use-package gptel
+  :ensure t
+  :commands (gptel gptel-send gptel-menu)
+  :init
+  ;; Optional UX defaults
+  (setq gptel-default-mode 'org-mode)   ;; or 'markdown-mode
+  :config
+  ;; Copilot backend lives behind the "extras" in newer gptel versions
+  ;; (Safe even if it’s already loaded.)
+  (require 'gptel-openai-extras)
+
+  ;; Make Copilot available as a backend:
+  (gptel-make-gh-copilot "Copilot")
+
+  ;; OPTIONAL: make Copilot the default backend + pick a default model
+  (setq gptel-backend (gptel-get-backend "Copilot")
+        gptel-model   'claude-3.7-sonnet)  ;; change to what you prefer
+  ;; Handy keys
+  (global-set-key (kbd "C-c g") #'gptel)
+  (global-set-key (kbd "C-c G") #'gptel-send))
+
 
 ;; Eglot (changing to lsp-mode for a more complete lsp experience)
 (use-package eglot
@@ -473,6 +495,7 @@
    (web-mode . eglot-ensure)
    (python-mode . eglot-ensure)
    (haskell-mode . eglot-ensure)
+	 (perl-mode . eglot-ensure)
    (rust-mode . eglot-ensure)
    (c-mode . eglot-ensure)
    (c++-mode . eglot-ensure)
@@ -647,10 +670,10 @@
 (use-package lean4-mode
   :commands lean4-mode
   :vc (:url "https://github.com/leanprover-community/lean4-mode.git"
-       :rev :last-release
-       ;; Or, if you prefer the bleeding edge version of Lean4-Mode:
-       ;; :rev :newest
-       ))
+						:rev :last-release
+						;; Or, if you prefer the bleeding edge version of Lean4-Mode:
+						;; :rev :newest
+						))
 
 (defun my/apply-ansi-colors ()
   (ansi-color-apply-on-region (point-min) (point-max)))
@@ -658,7 +681,7 @@
 (add-hook 'compilation-filter-hook 'my/apply-ansi-colors)
 
 (load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "agda --emacs-mode locate")))
+             (shell-command-to-string "agda --emacs-mode locate")))
 
 ;; Local Variables:
 ;; byte-compile-warnings: (not free-vars noruntime)

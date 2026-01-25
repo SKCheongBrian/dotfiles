@@ -1,3 +1,6 @@
+theme = "moonfly"
+window-padding-x = 20
+window-padding-y = 10
 # This is the configuration file for Ghostty.
 #
 # This template file has been automatically created at the following
@@ -25,7 +28,8 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
-# font-family = Iosevka
+font-family = Aporetic Serif Mono
+font-size = 14
 # window-padding-x = 2
 #
 # # Spacing around the equals sign does not matter.

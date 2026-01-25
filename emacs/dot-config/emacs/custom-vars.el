@@ -23,6 +23,7 @@
 		 "6fc9e40b4375d9d8d0d9521505849ab4d04220ed470db0b78b700230da0a86c1"
 		 default))
  '(eglot-confirm-server-edits nil nil nil "Customized with use-package eglot")
+ '(package-install-upgrade-built-in t)
  '(package-selected-packages
 	 '(acme-theme adaptive-warp adaptive-wrap auctex cape
 								color-theme-modern color-theme-sanityinc-tomorrow
@@ -30,7 +31,7 @@
 								doric-themes ef-themes eglot-java elm-mode
 								embark-consult evil-collection evil-commentary
 								evil-leader evil-nerd-commenter evil-surround
-								exec-path-from-shell expand-region flycheck
+								exec-path-from-shell expand-region flycheck gptel
 								gruber-dark gruber-darker-theme haskell-mode
 								haskell-ts-mode latex-preview-pane lean4-mode
 								lsp-haskell lsp-java lsp-ui magit marginalia minions
