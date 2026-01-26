@@ -5,4 +5,7 @@ emacs/dot-config/emacs/elpa/*
 emacs/dot-config/emacs/share/*
 emacs/dot-config/emacs/eshell/*
 emacs/dot-config/emacs/history
+emacs/dot-config/emacs/projects
+emacs/dot-config/emacs/recentf
+emacs/dot-config/emacs/tramp
 emacs/dot-config/emacs/tree-sitter/*

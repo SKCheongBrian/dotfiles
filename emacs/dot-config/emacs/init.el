@@ -376,7 +376,7 @@
 	((org-agenda-mode . (lambda () (org-gcal-sync)))
 	 (org-capture-mode . (lambda () (org-gcal-sync)))))
 
-(use-package notmuch)
+;; (use-package notmuch)
 
 (use-package denote
   :ensure t
@@ -459,26 +459,26 @@
 	(define-key typst-preview-mode-map (kbd "C-c C-j") 'typst-preview-send-position))
 
 ;; GPT stuff
-(use-package gptel
-  :ensure t
-  :commands (gptel gptel-send gptel-menu)
-  :init
-  ;; Optional UX defaults
-  (setq gptel-default-mode 'org-mode)   ;; or 'markdown-mode
-  :config
-  ;; Copilot backend lives behind the "extras" in newer gptel versions
-  ;; (Safe even if it’s already loaded.)
-  (require 'gptel-openai-extras)
+;; (use-package gptel
+;;   :ensure t
+;;   :commands (gptel gptel-send gptel-menu)
+;;   :init
+;;   ;; Optional UX defaults
+;;   (setq gptel-default-mode 'org-mode)   ;; or 'markdown-mode
+;;   :config
+;;   ;; Copilot backend lives behind the "extras" in newer gptel versions
+;;   ;; (Safe even if it’s already loaded.)
+;;   (require 'gptel-openai-extras)
 
-  ;; Make Copilot available as a backend:
-  (gptel-make-gh-copilot "Copilot")
+;;   ;; Make Copilot available as a backend:
+;;   (gptel-make-gh-copilot "Copilot")
 
-  ;; OPTIONAL: make Copilot the default backend + pick a default model
-  (setq gptel-backend (gptel-get-backend "Copilot")
-        gptel-model   'claude-3.7-sonnet)  ;; change to what you prefer
-  ;; Handy keys
-  (global-set-key (kbd "C-c g") #'gptel)
-  (global-set-key (kbd "C-c G") #'gptel-send))
+;;   ;; OPTIONAL: make Copilot the default backend + pick a default model
+;;   (setq gptel-backend (gptel-get-backend "Copilot")
+;;         gptel-model   'claude-3.7-sonnet)  ;; change to what you prefer
+;;   ;; Handy keys
+;;   (global-set-key (kbd "C-c g") #'gptel)
+;;   (global-set-key (kbd "C-c G") #'gptel-send))
 
 
 ;; Eglot (changing to lsp-mode for a more complete lsp experience)

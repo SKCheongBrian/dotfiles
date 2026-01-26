@@ -25,22 +25,20 @@
  '(eglot-confirm-server-edits nil nil nil "Customized with use-package eglot")
  '(package-install-upgrade-built-in t)
  '(package-selected-packages
-	 '(acme-theme adaptive-warp adaptive-wrap auctex cape
-								color-theme-modern color-theme-sanityinc-tomorrow
-								corfu denote dockerfile-mode doom-modeline
-								doric-themes ef-themes eglot-java elm-mode
-								embark-consult evil-collection evil-commentary
-								evil-leader evil-nerd-commenter evil-surround
-								exec-path-from-shell expand-region flycheck gptel
-								gruber-dark gruber-darker-theme haskell-mode
-								haskell-ts-mode latex-preview-pane lean4-mode
-								lsp-haskell lsp-java lsp-ui magit marginalia minions
-								mode-line-bell modus-themes moody naysayer-theme
-								nordic-night-theme notmuch nyan-mode oauth2 orderless
-								org-gcal org-roam org-roam-ui paredit pdf-tools
-								rainbow-mode spacious-padding standard-themes telega
-								typst-preview typst-ts-mode undo-fu vertico web-mode
-								yasnippet))
+	 '(acme-theme auctex cape color-theme-modern
+								color-theme-sanityinc-tomorrow corfu denote
+								dockerfile-mode doom-modeline doric-themes ef-themes
+								eglot-java elm-mode embark-consult evil-collection
+								evil-commentary evil-leader evil-nerd-commenter
+								evil-surround exec-path-from-shell expand-region
+								flycheck gruber-darker-theme haskell-mode
+								latex-preview-pane lean4-mode lsp-haskell lsp-java
+								lsp-ui magit marginalia minions mode-line-bell
+								modus-themes moody naysayer-theme nordic-night-theme
+								nyan-mode oauth2 orderless org-gcal org-roam-ui
+								paredit pdf-tools rainbow-mode spacious-padding
+								standard-themes telega tree-sitter-langs typst-preview
+								typst-ts-mode undo-fu vertico web-mode yasnippet))
  '(package-vc-selected-packages
 	 '((lean4-mode :url
 								 "https://github.com/leanprover-community/lean4-mode.git"))))
