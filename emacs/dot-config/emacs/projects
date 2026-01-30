@@ -1,5 +1,6 @@
 ;;; -*- lisp-data -*-
-(("/home/bc/projects/new-soc-site/")
+(("/Users/bc/.config/emacs/elpa/lean4-mode/")
+ ("/home/bc/projects/new-soc-site/")
  ("/home/bc/projects/java-visualizer/fyp-backend-rewrite/")
  ("/home/bc/projects/java-visualizer/fyp-nodeserver/")
  ("/home/bc/dotfiles/")

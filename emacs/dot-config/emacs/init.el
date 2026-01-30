@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; init.el
 
 ;; Set up package archives
@@ -39,23 +41,9 @@
 ;; Ensure that packages are always installed
 (setq use-package-always-ensure t)
 
-;; Setting up the fonts to look cooler
-;; (set-face-attribute 'default nil
-;; 					:family "Aporetic Serif Mono"
-;; 					:height 160)
-
-(set-face-attribute 'default nil
-										:family "Aporetic Serif Mono"
-										:height 120)
-
-;; (set-face-attribute 'default nil
-;; 					:family "Envy Code R"
-;; 					:height 160)
-
 (require 'epa-file)
 (setq epg-pinentry-mode 'loopback)
 (setq-default plstore-cache-passphrase-for-symmetric-encryption t)
-
 
 (use-package emacs
   :custom
@@ -71,27 +59,34 @@
 
 (use-package tree-sitter-langs)
 
+(defun brian/recenter-after-scroll (&rest _)
+  (recenter))
+
+(advice-add 'scroll-up-command :after	#'brian/recenter-after-scroll)
+(advice-add 'scroll-down-command :after #'brian/recenter-after-scroll)
+
 ;; Setting up theme to something nice
 (use-package acme-theme)
 (use-package nordic-night-theme)
 (use-package color-theme-modern)
 (use-package modus-themes)
 (use-package standard-themes)
-(use-package ef-themes)
+(use-package ef-themes
+	:config
+	(ef-themes-load-theme 'ef-elea-dark))
 (use-package doric-themes)
 (use-package color-theme-sanityinc-tomorrow)
-(use-package gruber-darker-theme)
-(use-package naysayer-theme
-	:config
-	(load-theme 'naysayer t))
+
 
 ;; Transparent background
 ;; (set-frame-parameter nil 'alpha-background 80)
 ;; (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
   :config
-  (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs '("PATH" "JAVA_HOME")))
 
 ;; Telegram for fun
 ;; (use-package telega)
@@ -154,10 +149,10 @@
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
 
-(setq initial-frame-alist '((top . 1)
-														(left . 0)
-														(width . 240)
-														(height . 100)))
+;; (setq initial-frame-alist '((top . 1)
+;; 														(left . 0)
+;; 														(width . 240)
+;; 														(height . 100)))
 
 
 ;; (setq visible-bell nil)
@@ -173,7 +168,14 @@
 
 (if (eq system-type 'darwin)
 		(progn (setq mac-command-modifier 'meta)
-					 (setq mac-option-modifier 'super)))
+					 (setq mac-option-modifier 'super)
+					 (setq insert-directory-program "/opt/homebrew/bin/gls")
+					 (set-face-attribute 'default nil
+										:family "Aporetic Serif Mono"
+										:height 180))
+	(progn (set-face-attribute 'default nil
+										:family "Aporetic Serif Mono"
+										:height 120)))
 
 
 ;; Orderless flexible matching
@@ -219,6 +221,8 @@
 		(insert line "\n")
 		(forward-line -1)
 		(move-to-column col)))
+
+(use-package avy)
 
 (defvar-keymap brians-prefixmap
   :doc "My prefix map."
@@ -531,6 +535,43 @@
 (use-package haskell-mode
 	:ensure t)
 
+(use-package flymake
+  :ensure t
+  :pin gnu
+  :config
+  (setq flymake-diagnostic-format-alist
+        '((t . (origin code message)))))
+
+(use-package envrc
+  :hook (after-init . envrc-global-mode))
+
+(use-package tuareg
+  :ensure t
+  :mode (("\\.ocamlinit\\'" . tuareg-mode)))
+
+(use-package ocaml-eglot
+  :ensure t
+  :after tuareg
+  :hook
+  (tuareg-mode . ocaml-eglot)
+  (ocaml-eglot . eglot-ensure)
+  :config
+  (setq ocaml-eglot-syntax-checker 'flymake))
+
+(use-package dune
+  :ensure t)
+
+(use-package opam-switch-mode
+  :ensure t
+  :hook
+  (tuareg-mode . opam-switch-mode))
+
+(use-package ocp-indent
+  :ensure t
+  :config
+  (add-hook 'ocaml-eglot-hook 'ocp-setup-indent))
+
+
 (use-package web-mode
 	:ensure t)
 
@@ -538,7 +579,7 @@
   (setq-local indent-tabs-mode nil)
   (setq-local tab-width 2)
   ;; web-mode indents (astro-mode inherits these)
-  (setq-local web-mode-markup-indent-offset 2)
+  (setq-local web-mode-markup-indent-offset 2)qq
   (setq-local web-mode-css-indent-offset 2)
   (setq-local web-mode-code-indent-offset 2)
   ;; optional: also align HTML attributes with 2

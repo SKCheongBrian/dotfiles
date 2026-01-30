@@ -9,3 +9,6 @@ emacs/dot-config/emacs/projects
 emacs/dot-config/emacs/recentf
 emacs/dot-config/emacs/tramp
 emacs/dot-config/emacs/tree-sitter/*
+emacs/dot-config/emacs/eclipse.jdt.ls/.DS_Store
+emacs/dot-config/emacs/.DS_Store
+emacs/dot-config/.DS_Store

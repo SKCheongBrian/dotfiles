@@ -25,20 +25,18 @@
  '(eglot-confirm-server-edits nil nil nil "Customized with use-package eglot")
  '(package-install-upgrade-built-in t)
  '(package-selected-packages
-	 '(acme-theme auctex cape color-theme-modern
+	 '(acme-theme auctex avy cape color-theme-modern
 								color-theme-sanityinc-tomorrow corfu denote
-								dockerfile-mode doom-modeline doric-themes ef-themes
-								eglot-java elm-mode embark-consult evil-collection
-								evil-commentary evil-leader evil-nerd-commenter
-								evil-surround exec-path-from-shell expand-region
-								flycheck gruber-darker-theme haskell-mode
-								latex-preview-pane lean4-mode lsp-haskell lsp-java
-								lsp-ui magit marginalia minions mode-line-bell
-								modus-themes moody naysayer-theme nordic-night-theme
-								nyan-mode oauth2 orderless org-gcal org-roam-ui
-								paredit pdf-tools rainbow-mode spacious-padding
-								standard-themes telega tree-sitter-langs typst-preview
-								typst-ts-mode undo-fu vertico web-mode yasnippet))
+								dockerfile-mode doric-themes dune editorconfig
+								ef-themes eglot-java elm-mode embark-consult envrc
+								exec-path-from-shell expand-region faceup flycheck
+								haskell-mode lean4-mode magit marginalia
+								mode-line-bell naysayer-theme nordic-night-theme
+								ocaml-eglot ocp-indent opam-switch-mode orderless org
+								org-gcal org-roam-ui paredit peg standard-themes
+								timeout tramp transient tree-sitter-langs tuareg
+								typst-preview typst-ts-mode vertico web-mode which-key
+								yasnippet))
  '(package-vc-selected-packages
 	 '((lean4-mode :url
 								 "https://github.com/leanprover-community/lean4-mode.git"))))
