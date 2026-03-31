@@ -26,6 +26,9 @@ vim.opt.scrolloff = 10
 -- don't show mode since it's already in the status line
 vim.opt.showmode = false
 
+-- Add the site directory to the runtimepath
+vim.opt.rtp:prepend("~/.local/share/nvim/site")
+
 -- highlight text that is yanked
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -33,4 +36,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
+})
+
+-- install treesitter grammar if don't have
+-- if present or after installation, start treesitter highlighting
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function(args)
+        local treesitter = require('nvim-treesitter')
+        local lang = vim.treesitter.language.get_lang(args.match)
+        if vim.list_contains(treesitter.get_available(), lang) then
+            if not vim.list_contains(treesitter.get_installed(), lang) then
+                treesitter.install(lang):wait()
+            end
+            vim.treesitter.start(args.buf)
+        end
+    end,
+    desc = "Enable nvim-treesitter and install parser if not installed"
 })
