@@ -364,22 +364,6 @@
         (800 1000 1200 1400 1600 1800 2000 2200)
         "......" "----------------"))
 
-(use-package org-gcal
-	:init
-	(setq org-gcal-client-id "1014346309811-viv3keeo0figiquiepd0pnr1771nge6r.apps.googleusercontent.com"
-				org-gcal-client-secret "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"
-				org-gcal-fetch-file-alist '(("3a46f53a0303c2a70787c81e7a1d0bdaed5b33867847d9559e11de5d7d0fe9b9@group.calendar.google.com" . "~/org/agenda/appointments.org")
-																		("80c53f39ec9db4abfa94b0284b32a2e8ba3fe89ba87543bf5cb335db0f3b97b0@group.calendar.google.com" . "~/org/agenda/breaks.org")
-																		("7344aa12c6072ab694a538c5aec4cc2f9f7b835eeadf6e67a4ec366fb1ee7879@group.calendar.google.com" . "~/org/agenda/dailyroutine.org")
-																		("e0f4db8fea2c0fd571c4dcc0330247dfc654ffde8ffd24645b3806530dc415d0@group.calendar.google.com" . "~/org/agenda/girlfriend.org")
-																		("551613974112816c1243a2a23bc39877b2f8541ad40a32c52e434adb442ef511@group.calendar.google.com" . "~/org/agenda/research.org")
-																		("9365c6c83b0ddf9fa549ce142e8f48ce3ce87dc88f2a56b56b97c10cc47e07b1@group.calendar.google.com" . "~/org/agenda/spikehome.org"))
-				epg-pinentry-mode 'loopback
-				plstore-cache-passphrase-for-symmetric-encryption t)
-	:hook
-	((org-agenda-mode . (lambda () (org-gcal-sync)))
-	 (org-capture-mode . (lambda () (org-gcal-sync)))))
-
 ;; (use-package notmuch)
 
 (use-package denote
