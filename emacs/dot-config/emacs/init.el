@@ -174,8 +174,8 @@
 										:family "Aporetic Serif Mono"
 										:height 180))
 	(progn (set-face-attribute 'default nil
-										:family "Aporetic Serif Mono"
-										:height 120)))
+										:family "FiraCode Nerd Font Mono"
+										:height 140)))
 
 
 ;; Orderless flexible matching
@@ -721,8 +721,6 @@
 
 (add-hook 'compilation-filter-hook 'my/apply-ansi-colors)
 
-(load-file (let ((coding-system-for-read 'utf-8))
-             (shell-command-to-string "agda --emacs-mode locate")))
 
 ;; Local Variables:
 ;; byte-compile-warnings: (not free-vars noruntime)
