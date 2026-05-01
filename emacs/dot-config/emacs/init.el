@@ -22,6 +22,8 @@
 (setq c-default-style
 			'((java-mode . "linux")))
 
+(setq package-install-upgrade-built-in t)
+
 ;; Bootstrap use-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
