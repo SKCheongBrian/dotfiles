@@ -29,8 +29,8 @@
 								color-theme-sanityinc-tomorrow corfu denote
 								dockerfile-mode doric-themes dune ef-themes eglot-java
 								elm-mode embark-consult envrc exec-path-from-shell
-								expand-region flycheck haskell-mode lean4-mode magit
-								marginalia mode-line-bell nordic-night-theme
+								expand-region flycheck haskell-mode helpful lean4-mode
+								magit marginalia mode-line-bell nordic-night-theme
 								ocaml-eglot ocp-indent opam-switch-mode orderless
 								org-roam-ui paredit standard-themes transient-dwim
 								tree-sitter-langs tuareg typst-preview typst-ts-mode

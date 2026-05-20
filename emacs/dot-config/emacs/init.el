@@ -90,6 +90,12 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs '("PATH" "JAVA_HOME")))
 
+(add-to-list 'exec-path (expand-file-name "~/.local/bin"))
+(setenv "PATH"
+        (concat (expand-file-name "~/.local/bin")
+                path-separator
+                (getenv "PATH")))
+
 ;; Telegram for fun
 ;; (use-package telega)
 
@@ -125,10 +131,10 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (setq inhibit-startup-screen t)
-(global-display-line-numbers-mode t)
-(blink-cursor-mode -1)
-(column-number-mode 1)
-(global-goto-address-mode 1)
+(global-display-line-numbers-mode t) ; line numbers
+(blink-cursor-mode -1) ; stops blinking cursor
+(column-number-mode 1) ; displays column number in the status bar
+(global-goto-address-mode 1) ; marks out URLs as clickable
 (delete-selection-mode 1)
 
 (recentf-mode 1)
@@ -275,6 +281,15 @@
 
 (use-package expand-region
   :bind (("C-=" . 'er/expand-region)))
+
+(use-package helpful
+	:bind
+	(("C-h f" . helpful-callable)
+	 ("C-h v" . helpful-variable)
+	 ("C-h k" . helpful-key)
+	 ("C-h x" . helpful-command)
+	 ("C-c C-d" . helpful-at-point)
+	 ("C-h F" . helpful-function)))
 
 ;; project management
 (use-package project
