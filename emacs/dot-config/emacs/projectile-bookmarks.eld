@@ -1,0 +1,1 @@
+("~/projects/lf/" "~/dotfiles/" "~/.config/emacs/" "~/repos/6915783dc1a478137048e3ab/" "~/Downloads/acmart-primary/" "~/projects/codecrafters-shell-haskell/" "~/projects/codecrafters-git-haskell/" "~/projects/codecrafters-bittorrent-go/" "~/repos/paper-lr-abstract-interpretation-ll/" "~/projects/pdf-crop/")

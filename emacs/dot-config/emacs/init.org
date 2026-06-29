@@ -39,6 +39,7 @@
   - [[#language-modes][Language modes]]
   - [[#terminal][Terminal]]
 - [[#research][Research]]
+  - [[#proof-general][Proof General]]
   - [[#latex][LaTeX]]
   - [[#reftex][RefTeX]]
   - [[#pdf-tools][pdf-tools]]
@@ -948,7 +949,7 @@ You can also use treesit-auto, but it is updated quite slowly so we don't use it
 To explore the current buffer's syntax tree, use the treesit-explore-mode command.
 
 *To use it, remove :tangle no from the beginning of the source code block.*
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
     (setq treesit-language-source-alist
           '((bash "https://github.com/tree-sitter/tree-sitter-bash")
             (cmake "https://github.com/uyha/tree-sitter-cmake")
@@ -988,6 +989,7 @@ To explore the current buffer's syntax tree, use the treesit-explore-mode comman
     (setq major-mode-remap-alist
           '((yaml-mode . yaml-ts-mode)
             (sh-mode . bash-ts-mode)
+            (haskell-mode . haskell-ts-mode)
             (c-mode . c-ts-mode)
             (c++-mode . c++-ts-mode)
             (css-mode . css-ts-mode)
@@ -1127,6 +1129,14 @@ Make Emacs use the $PATH set up by the user's shell
       :hook (after-init . exec-path-from-shell-initialize))
 #+end_src
 * Research
+** Proof General
+
+To prove that I'm enough
+
+#+begin_src emacs-lisp
+    (use-package proof-general
+      :ensure t)
+#+end_src
 ** LaTeX
 
 We use AUCTeX for editing, compiling, and navigating TeX files.
