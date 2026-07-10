@@ -1,17 +1,20 @@
 ;; -*- lexical-binding: t; -*-
 
-(defun start/org-babel-tangle-config ()
-  "Automatically tangle our init.org config file and refresh package-quickstart when we save it. Credit to Emacs From Scratch for this one!"
-  (interactive)
-  (when (string-equal (file-name-directory (buffer-file-name))
-                      (expand-file-name user-emacs-directory))
-    ;; Dynamic scoping to the rescue
+(defun brian/org-babel-tangle-init ()
+  "Tangle init.org after saving."
+  (when (and buffer-file-name
+             (string-equal
+              (file-truename buffer-file-name)
+              (file-truename (expand-file-name "init.org" user-emacs-directory))))
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle)
-      (package-quickstart-refresh)
-      )))
+      ;; Only keep this if package-quickstart is enabled and package.el is loaded.
+      (when (bound-and-true-p package-quickstart)
+        (package-quickstart-refresh)))))
 
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'start/org-babel-tangle-config)))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-hook 'after-save-hook #'brian/org-babel-tangle-init nil t)))
 
 (defun start/display-startup-time ()
   (interactive)
@@ -50,7 +53,7 @@
   (inhibit-startup-screen t)  ;; Disable welcome screen
 
   (delete-selection-mode t)   ;; Select text and delete it by typing.
-  (electric-indent-mode nil)  ;; Turn off the weird indenting that Emacs does by default.
+  (electric-indent-mode t)  ;; Turn off the weird indenting that Emacs does by default.
   (electric-pair-mode t)      ;; Turns on automatic parens pairing
 
   (blink-cursor-mode nil)     ;; Don't blink cursor
@@ -59,6 +62,7 @@
 
   (dired-kill-when-opening-new-dired-buffer t) ;; Dired don't create new buffer
   (recentf-mode t) ;; Enable recent file mode
+  (dired-isearch-filenames 'dwim)
   ;;(context-menu-mode t) ;; Right-click menu
 
   ;;(global-visual-line-mode t)           ;; Enable line wrapping (NOTE: breaks vundo)
@@ -96,6 +100,12 @@
   ;; Move customization variables to a separate file and load it, avoid filling up init.el with unnecessary variables
   (setq custom-file (locate-user-emacs-file "custom-vars.el"))
   (load custom-file 'noerror 'nomessage)
+  (when (eq system-type 'darwin)
+    (setq insert-directory-program "gls"
+          dired-use-ls-dired t
+          dired-listing-switches "-alh --group-directories-first"
+          ns-command-modifier 'meta
+          ns-option-modifer 'super))
   :bind (
          ([escape] . keyboard-quit) ;; Makes Escape quit prompts (Minibuffer Escape)
          ;; Zooming In/Out
@@ -218,6 +228,16 @@
     "m c" '(consult-bookmark :wk "Consult Bookmark"))
 
   (start/leader-keys
+    "n" '(:ignore t :wk "Notes")
+    ;; Org-roam
+    "n b" '(org-roam-buffer-toggle :wk "Toggle Org Roam [B]uffer")
+    "n f" '(org-roam-node-find :wk "[F]ind Org Roam Node")
+    "n g" '(org-roam-graph :wk "Org Roam [G]raph")
+    "n i" '(org-roam-node-insert :wk "[I]nsert Org Roam Node")
+    "n c" '(org-roam-capture :wk "Org Roam [C]apture")
+    "n j" '(org-roam-dailies-capture-today :wk "Org Roam [J]ournal"))
+
+  (start/leader-keys
     "f" '(:ignore t :wk "Find")
     "f c" '(start/open-init-file :wk "Open init file")
     "f r" '(consult-recent-file :wk "Search recent files")
@@ -295,7 +315,7 @@
 (use-package kanagawa-themes
   :ensure t
   :config
-  (load-theme 'kanagawa-dragon t))
+  (load-theme 'modus-operandi t))
 
 (add-to-list 'default-frame-alist '(alpha-background . 90)) ;; For all new frames henceforth
 
@@ -334,13 +354,15 @@
 
 (use-package go-mode)
 (use-package haskell-mode)
+(use-package zig-mode)
 (use-package eglot
   :ensure nil ;; Don't install eglot because it's now built-in
   :hook ((c-mode ;; Autostart lsp servers for a given mode
           c++-mode
           haskell-mode
           lua-mode
-          go-mode) ;; Lua-mode needs to be installed
+          go-mode
+          typst-ts-mode) ;; Lua-mode needs to be installed
          . eglot-ensure)
   :config
   (setq-default eglot-workspace-configuration
@@ -352,10 +374,9 @@
   (eglot-autoshutdown t);; Shutdown unused servers.
   (eglot-report-progress nil) ;; Disable LSP server logs (Don't show lsp messages at the bottom, java)
   ;; Manual lsp servers
-  ;;:config
-  ;;(add-to-list 'eglot-server-programs
-  ;;             `(lua-mode . ("PATH_TO_THE_LSP_FOLDER/bin/lua-language-server" "-lsp"))) ;; Adds our lua lsp server to eglot's server list
-  )
+  :config
+  (add-to-list 'eglot-server-programs
+               '(typst-ts-mode . ("tinymist"))))
 
 (use-package mason
   :hook (after-init . mason-ensure))
@@ -474,18 +495,43 @@
 (use-package proof-general
   :ensure t)
 
+(use-package company-coq
+  :ensure t
+  :after proof-general
+  :hook
+  (coq-mode . brian/coq-company-setup))
+
+(defun brian/coq-company-setup ()
+  (corfu-mode -1)
+  (company-mode 1)
+  (company-coq-mode 1))
+
 (use-package tex
   :ensure auctex
   :defer t
+  :hook
+  ((LaTeX-mode . TeX-source-correlate-mode)
+   (LaTeX-mode . reftex-mode))
   :config
-  (setq TeX-auto-save t)
-  (setq TeX-parse-self t)
-  (setq TeX-save-query nil)
-  (setq TeX-command-default "LatexMk")
-  (setq TeX-source-correlate-mode t)
-  (setq TeX-source-correlate-start-server t)
-  (setq TeX-PDF-mode t)
-  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))))
+  (setq TeX-auto-save t
+        TeX-parse-self t
+        TeX-save-query nil
+        TeX-command-default "LatexMk"
+        TeX-source-correlate-method 'synctex
+        TeX-source-correlate-start-server t
+        TeX-PDF-mode t
+        TeX-view-program-selection '((output-pdf "PDF Tools"))
+        TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+        reftex-plug-into-AUCTeX t)
+
+  (add-to-list 'TeX-command-list
+               '("LatexMk"
+                 "latexmk -pdf -synctex=1 -interaction=nonstopmode %s"
+                 TeX-run-TeX nil t
+                 :help "Run latexmk"))
+
+  (add-hook 'TeX-after-compilation-finished-functions
+            #'TeX-revert-document-buffer))
 
 (use-package reftex
   :ensure nil
@@ -495,10 +541,110 @@
 
 (use-package pdf-tools
   :ensure t
-  :mode ("\.pdf\'" . pdf-view-mode)
+  :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
   (pdf-tools-install)
-  (add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1))))
+
+  ;; Work around macOS multi-monitor bug where pdf-tools SyncTeX
+  ;; arrow tooltips appear on the wrong monitor.
+  (with-eval-after-load 'pdf-util
+    (defvar brian/pdf-sync-arrow-frame nil)
+    (defvar brian/pdf-sync-arrow-timer nil)
+
+    (defun brian/pdf-sync-arrow-hide ()
+      (when (timerp brian/pdf-sync-arrow-timer)
+        (cancel-timer brian/pdf-sync-arrow-timer)
+        (setq brian/pdf-sync-arrow-timer nil))
+      (when (frame-live-p brian/pdf-sync-arrow-frame)
+        (delete-frame brian/pdf-sync-arrow-frame))
+      (setq brian/pdf-sync-arrow-frame nil))
+
+    (defun brian/pdf-sync-arrow-show-in-window (text x y &optional window timeout)
+      "Show pdf-tools SyncTeX arrow TEXT at X,Y inside WINDOW."
+      (let* ((window (or window (selected-window)))
+             (parent (window-frame window))
+             (left (+ (window-pixel-left window) (round x)))
+             (top  (+ (window-pixel-top window)  (round y)))
+             (buf (get-buffer-create " *pdf-sync-arrow*")))
+        (brian/pdf-sync-arrow-hide)
+        (with-current-buffer buf
+          (erase-buffer)
+          (setq-local mode-line-format nil)
+          (setq-local cursor-type nil)
+          (insert text))
+        (setq brian/pdf-sync-arrow-frame
+              (make-frame
+               `((parent-frame . ,parent)
+                 (left . ,left)
+                 (top . ,top)
+                 (width . 2)
+                 (height . 1)
+                 (minibuffer . nil)
+                 (undecorated . t)
+                 (unsplittable . t)
+                 (no-accept-focus . t)
+                 (no-focus-on-map . t)
+                 (visibility . nil)
+                 (internal-border-width . 0)
+                 (border-width . 0)
+                 (left-fringe . 0)
+                 (right-fringe . 0)
+                 (vertical-scroll-bars . nil)
+                 (horizontal-scroll-bars . nil)
+                 (menu-bar-lines . 0)
+                 (tool-bar-lines . 0))))
+        (set-window-buffer (frame-root-window brian/pdf-sync-arrow-frame) buf)
+        (make-frame-visible brian/pdf-sync-arrow-frame)
+        (setq brian/pdf-sync-arrow-timer
+              (run-at-time (or timeout 3)
+                           nil
+                           #'brian/pdf-sync-arrow-hide))))
+
+    ;; Override pdf-tools' tooltip placement with child-frame placement.
+    (defun pdf-util-tooltip-in-window (text x y &optional window)
+      (brian/pdf-sync-arrow-show-in-window
+       text
+       x
+       y
+       window
+       (if (boundp 'tooltip-hide-delay)
+           tooltip-hide-delay
+         3))))
+
+  ;; Needed for SyncTeX backward search from PDF to source.
+  (add-hook 'pdf-view-mode-hook #'pdf-sync-minor-mode)
+
+  (add-hook 'pdf-view-mode-hook
+            (lambda ()
+              (display-line-numbers-mode -1))))
+
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory (file-truename "~/notes/"))
+  (org-roam-db-location "~/notes/org-roam.db")
+  :config
+  (org-roam-db-autosync-mode))
+
+(use-package typst-preview
+  :ensure t
+  :hook
+  (typst-ts-mode . typst-preview-mode)
+
+  :custom
+  (typst-preview-autostart t)
+  (typst-preview-open-browser-automatically t)
+  (typst-preview-invert-colors "never")
+
+  :bind
+  (:map typst-preview-mode-map
+        ("C-c C-j" . typst-preview-send-position)))
+
+(use-package typst-ts-mode
+  :vc (:url "https://codeberg.org/meow_king/typst-ts-mode.git")
+  :mode ("\\.typ\\'" . typst-ts-mode))
 
 ;; (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -571,7 +717,7 @@
                          ;; #'cape-line         ;; Complete entire line from current buffer
                          ;; #'cape-history      ;; Complete from Eshell, Comint or minibuffer history
                          ;; #'cape-dict         ;; Dictionary completion (Needs Dictionary file installed)
-                         ;; #'cape-tex          ;; Complete Unicode char from TeX command, e.g. \hbar
+                         #'cape-tex          ;; Complete Unicode char from TeX command, e.g. \hbar
                          ;; #'cape-sgml         ;; Complete Unicode char from SGML entity, e.g., &alpha
                          ;; #'cape-rfc1345      ;; Complete Unicode char using RFC 1345 mnemonics
                          ;; #'snippy-capf       ;; Vscode Snippets (Snippy needs to be installed)
@@ -747,8 +893,8 @@
   )
 
 (use-package indent-guide
-  :hook
-  (prog-mode . indent-guide-mode)
+  ;; :hook
+  ;; (prog-mode . indent-guide-mode)
   :config
   (setq indent-guide-char "|")) ;; Set the character used for the indent guide.
 

@@ -1,4 +1,4 @@
-#+Title: Kickstart.emacs
+h#+Title: Kickstart.emacs
 #+Author: MiniApollo
 #+Description: Blazingly fast starting point for your Emacs configuration.
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
@@ -40,9 +40,13 @@
   - [[#terminal][Terminal]]
 - [[#research][Research]]
   - [[#proof-general][Proof General]]
+  - [[#company-coq][Company Coq]]
   - [[#latex][LaTeX]]
   - [[#reftex][RefTeX]]
   - [[#pdf-tools][pdf-tools]]
+  - [[#org-roam][Org Roam]]
+- [[#teaching][Teaching]]
+  - [[#typst][Typst]]
 - [[#multi-file-example][Multi File Example]]
   - [[#adding-the-lisp-directory-to-load-path][Adding the lisp directory to load-path]]
   - [[#sourcing-the-files][Sourcing the files]]
@@ -233,18 +237,21 @@ This snippet adds a hook to org-mode buffers so that start/org-babel-tangle-conf
 This function checks to see if the file being saved is the init.org file you’re looking at right now, and if so,
 automatically exports the configuration here to the associated output files.
 #+begin_src emacs-lisp
-    (defun start/org-babel-tangle-config ()
-      "Automatically tangle our init.org config file and refresh package-quickstart when we save it. Credit to Emacs From Scratch for this one!"
-      (interactive)
-      (when (string-equal (file-name-directory (buffer-file-name))
-                          (expand-file-name user-emacs-directory))
-        ;; Dynamic scoping to the rescue
+    (defun brian/org-babel-tangle-init ()
+      "Tangle init.org after saving."
+      (when (and buffer-file-name
+                 (string-equal
+                  (file-truename buffer-file-name)
+                  (file-truename (expand-file-name "init.org" user-emacs-directory))))
         (let ((org-confirm-babel-evaluate nil))
           (org-babel-tangle)
-          (package-quickstart-refresh)
-          )))
+          ;; Only keep this if package-quickstart is enabled and package.el is loaded.
+          (when (bound-and-true-p package-quickstart)
+            (package-quickstart-refresh)))))
 
-    (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'start/org-babel-tangle-config)))
+    (add-hook 'org-mode-hook
+              (lambda ()
+                (add-hook 'after-save-hook #'brian/org-babel-tangle-init nil t)))
 #+end_src
 
 ** Show startup time
@@ -378,7 +385,7 @@ Only works with package.el.
       (inhibit-startup-screen t)  ;; Disable welcome screen
 
       (delete-selection-mode t)   ;; Select text and delete it by typing.
-      (electric-indent-mode nil)  ;; Turn off the weird indenting that Emacs does by default.
+      (electric-indent-mode t)  ;; Turn off the weird indenting that Emacs does by default.
       (electric-pair-mode t)      ;; Turns on automatic parens pairing
 
       (blink-cursor-mode nil)     ;; Don't blink cursor
@@ -387,6 +394,7 @@ Only works with package.el.
 
       (dired-kill-when-opening-new-dired-buffer t) ;; Dired don't create new buffer
       (recentf-mode t) ;; Enable recent file mode
+      (dired-isearch-filenames 'dwim)
       ;;(context-menu-mode t) ;; Right-click menu
 
       ;;(global-visual-line-mode t)           ;; Enable line wrapping (NOTE: breaks vundo)
@@ -424,6 +432,12 @@ Only works with package.el.
       ;; Move customization variables to a separate file and load it, avoid filling up init.el with unnecessary variables
       (setq custom-file (locate-user-emacs-file "custom-vars.el"))
       (load custom-file 'noerror 'nomessage)
+      (when (eq system-type 'darwin)
+        (setq insert-directory-program "gls"
+              dired-use-ls-dired t
+              dired-listing-switches "-alh --group-directories-first"
+              ns-command-modifier 'meta
+              ns-option-modifer 'super))
       :bind (
              ([escape] . keyboard-quit) ;; Makes Escape quit prompts (Minibuffer Escape)
              ;; Zooming In/Out
@@ -501,186 +515,196 @@ And it is also really customizable.
 
 Note: The Leader key is what you will press when you want to access your keybindings: C-SPC + .  Find file
 #+begin_src emacs-lisp
-    (defun start/open-init-file ()
-      "Open init.org configuration file"
-      (interactive)
-      (find-file "~/.config/emacs/init.org"))
+        (defun start/open-init-file ()
+          "Open init.org configuration file"
+          (interactive)
+          (find-file "~/.config/emacs/init.org"))
 
-    (defun start/reload-config()
-      "Reload Emacs config"
-      (interactive)
-      (load-file "~/.config/emacs/init.el"))
+        (defun start/reload-config()
+          "Reload Emacs config"
+          (interactive)
+          (load-file "~/.config/emacs/init.el"))
 
-    (defun brian/highlight-line ()
-      (interactive)
-      (move-beginning-of-line nil)
-      (set-mark-command nil)
-      (move-end-of-line nil))
+        (defun brian/highlight-line ()
+          (interactive)
+          (move-beginning-of-line nil)
+          (set-mark-command nil)
+          (move-end-of-line nil))
 
-    (defun brian/select-word ()
-    	(interactive)
-    	(let ((bounds (bounds-of-thing-at-point 'word)))
-    		(when bounds
-    			(unless (= (point) (car bounds))
-    				(backward-word))))
-    	(set-mark-command nil)
-    	(forward-word))
+        (defun brian/select-word ()
+        	(interactive)
+        	(let ((bounds (bounds-of-thing-at-point 'word)))
+        		(when bounds
+        			(unless (= (point) (car bounds))
+        				(backward-word))))
+        	(set-mark-command nil)
+        	(forward-word))
 
-    (defun brian/kill-line ()
-      (interactive)
-      (move-beginning-of-line nil)
-      (kill-line)
-      (kill-line))
+        (defun brian/kill-line ()
+          (interactive)
+          (move-beginning-of-line nil)
+          (kill-line)
+          (kill-line))
 
-    (defun brian/duplicate-line ()
-    	(interactive)
-    	(let ((line (buffer-substring (line-beginning-position) (line-end-position)))
-    				(pos (point))
-    				(col (current-column)))
-    		(forward-line 1)
-    		(insert line "\n")
-    		(forward-line -1)
-    		(move-to-column col)))
+        (defun brian/duplicate-line ()
+        	(interactive)
+        	(let ((line (buffer-substring (line-beginning-position) (line-end-position)))
+        				(pos (point))
+        				(col (current-column)))
+        		(forward-line 1)
+        		(insert line "\n")
+        		(forward-line -1)
+        		(move-to-column col)))
 
-    (use-package avy)
+        (use-package avy)
 
-    (use-package expand-region
-      :bind ("C-=" . 'er/expand-region))
+        (use-package expand-region
+          :bind ("C-=" . 'er/expand-region))
 
-    (use-package general
-      ;; :after (evil) ;; <- evil
-      :config
-      ;; (general-evil-setup) ;; <- evil
-      (general-define-key
-       :keymaps 'override
-       "M-o" '(other-window :wk "Other window"))
+        (use-package general
+          ;; :after (evil) ;; <- evil
+          :config
+          ;; (general-evil-setup) ;; <- evil
+          (general-define-key
+           :keymaps 'override
+           "M-o" '(other-window :wk "Other window"))
 
-      (general-define-key
-       :keymaps 'override
-       "C-," '(brian/duplicate-line :wk "Duplicate line"))
+          (general-define-key
+           :keymaps 'override
+           "C-," '(brian/duplicate-line :wk "Duplicate line"))
 
-      (general-create-definer brian/prefixmap
-        :keymaps 'override
-        :prefix "C-q"
-        :global-prefix "C-q")
+          (general-create-definer brian/prefixmap
+            :keymaps 'override
+            :prefix "C-q"
+            :global-prefix "C-q")
 
-      (brian/prefixmap
-        "s" '(consult-line :wk "Consult line")
-        "C-s" '(consult-line :wk "Consult line")
-        "l" '(brian/highlight-line :wk "Highlight line")
-        "C-l" '(brian/highlight-line :wk "Highlight line")
-        "w" '(brian/select-word :wk "Highlight word")
-        "C-w" '(brian/select-word :wk "Highlight word")
-        "k" '(brian/kill-line :wk "Kill line")
-        "C-k" '(brian/kill-line :wk "Kill line")
-        "j" '(avy-goto-char :wk "Goto character")
-        "C-j" '(avy-goto-char :wk "Goto character"))
+          (brian/prefixmap
+            "s" '(consult-line :wk "Consult line")
+            "C-s" '(consult-line :wk "Consult line")
+            "l" '(brian/highlight-line :wk "Highlight line")
+            "C-l" '(brian/highlight-line :wk "Highlight line")
+            "w" '(brian/select-word :wk "Highlight word")
+            "C-w" '(brian/select-word :wk "Highlight word")
+            "k" '(brian/kill-line :wk "Kill line")
+            "C-k" '(brian/kill-line :wk "Kill line")
+            "j" '(avy-goto-char :wk "Goto character")
+            "C-j" '(avy-goto-char :wk "Goto character"))
 
-      ;; Set up 'C-SPC' as the leader key
-      (general-create-definer start/leader-keys
-        ;; :states '(normal insert visual motion emacs) ;; <- evil
-        :keymaps 'override
-        :prefix "C-c SPC"
-        :global-prefix "C-c SPC") ;; Set global leader key so we can access our keybindings from any state
+          ;; Set up 'C-SPC' as the leader key
+          (general-create-definer start/leader-keys
+            ;; :states '(normal insert visual motion emacs) ;; <- evil
+            :keymaps 'override
+            :prefix "C-c SPC"
+            :global-prefix "C-c SPC") ;; Set global leader key so we can access our keybindings from any state
 
-      (start/leader-keys
-        "," '(embark-act :wk "Embark act")
-        "TAB" '(comment-line :wk "Comment lines")
-        "q" '(flymake-show-buffer-diagnostics :wk "Flymake buffer diagnostic")
-        "c" '(eat :wk "Eat terminal")
+          (start/leader-keys
+            "," '(embark-act :wk "Embark act")
+            "TAB" '(comment-line :wk "Comment lines")
+            "q" '(flymake-show-buffer-diagnostics :wk "Flymake buffer diagnostic")
+            "c" '(eat :wk "Eat terminal")
 
-        ;; Projectile
-        "p" '(projectile-command-map :wk "Projectile")
-        "s p" '(projectile-discover-projects-in-search-path :wk "Search for projects"))
+            ;; Projectile
+            "p" '(projectile-command-map :wk "Projectile")
+            "s p" '(projectile-discover-projects-in-search-path :wk "Search for projects"))
 
-      (start/leader-keys
-        "m" '(:ignore t :wk "Bookmarks & Registers")
-        ;; Registers
-        "m s" '(consult-register :wk "Consult register")
-        "m k" '(jump-to-register :wk "Jump to register")
-        "m e" '(point-to-register :wk "Point to register")
-        ;; Bookmarks
-        "m a" '(bookmark-set :wk "Bookmark Set")
-        "m d" '(bookmark-jump :wk "Bookmark Jump")
-        "m r" '(bookmark-delete :wk "Bookmark Delete")
-        "m R" '(bookmark-delete-all :wk "Bookmark Delete All")
-        "m l" '(bookmark-bmenu-list :wk "Bookmark bmenu list")
-        "m c" '(consult-bookmark :wk "Consult Bookmark"))
+          (start/leader-keys
+            "m" '(:ignore t :wk "Bookmarks & Registers")
+            ;; Registers
+            "m s" '(consult-register :wk "Consult register")
+            "m k" '(jump-to-register :wk "Jump to register")
+            "m e" '(point-to-register :wk "Point to register")
+            ;; Bookmarks
+            "m a" '(bookmark-set :wk "Bookmark Set")
+            "m d" '(bookmark-jump :wk "Bookmark Jump")
+            "m r" '(bookmark-delete :wk "Bookmark Delete")
+            "m R" '(bookmark-delete-all :wk "Bookmark Delete All")
+            "m l" '(bookmark-bmenu-list :wk "Bookmark bmenu list")
+            "m c" '(consult-bookmark :wk "Consult Bookmark"))
 
-      (start/leader-keys
-        "f" '(:ignore t :wk "Find")
-        "f c" '(start/open-init-file :wk "Open init file")
-        "f r" '(consult-recent-file :wk "Search recent files")
-        "f f" '(consult-fd :wk "Find files with fd")
-        "f g" '(consult-ripgrep :wk "Find with ripgrep")
-        "f l" '(consult-line :wk "Find line")
-        "f i" '(consult-imenu :wk "Find in Imenu buffer locations")) ;; This one is really cool
+          (start/leader-keys
+            "n" '(:ignore t :wk "Notes")
+            ;; Org-roam
+            "n b" '(org-roam-buffer-toggle :wk "Toggle Org Roam [B]uffer")
+            "n f" '(org-roam-node-find :wk "[F]ind Org Roam Node")
+            "n g" '(org-roam-graph :wk "Org Roam [G]raph")
+            "n i" '(org-roam-node-insert :wk "[I]nsert Org Roam Node")
+            "n c" '(org-roam-capture :wk "Org Roam [C]apture")
+            "n j" '(org-roam-dailies-capture-today :wk "Org Roam [J]ournal"))
 
-      (start/leader-keys
-        "d" '(:ignore t :wk "Buffers & Dired")
-        "d s" '(consult-buffer :wk "Switch buffer")
-        "d k" '(kill-current-buffer :wk "Kill current buffer")
-        "d i" '(ibuffer :wk "Ibuffer")
-        "d n" '(next-buffer :wk "Next buffer")
-        "d p" '(previous-buffer :wk "Previous buffer")
-        "d r" '(revert-buffer :wk "Reload buffer")
-        "d v" '(dired :wk "Open dired")
-        "d j" '(dired-jump :wk "Dired jump to current"))
+          (start/leader-keys
+            "f" '(:ignore t :wk "Find")
+            "f c" '(start/open-init-file :wk "Open init file")
+            "f r" '(consult-recent-file :wk "Search recent files")
+            "f f" '(consult-fd :wk "Find files with fd")
+            "f g" '(consult-ripgrep :wk "Find with ripgrep")
+            "f l" '(consult-line :wk "Find line")
+            "f i" '(consult-imenu :wk "Find in Imenu buffer locations")) ;; This one is really cool
 
-      (start/leader-keys
-        "e" '(:ignore t :wk "Languages")
-        "e e" '(eglot-reconnect :wk "Eglot Reconnect")
-        "e d" '(eldoc-doc-buffer :wk "Eldoc Buffer")
-        "e f" '(eglot-format :wk "Eglot Format")
+          (start/leader-keys
+            "d" '(:ignore t :wk "Buffers & Dired")
+            "d s" '(consult-buffer :wk "Switch buffer")
+            "d k" '(kill-current-buffer :wk "Kill current buffer")
+            "d i" '(ibuffer :wk "Ibuffer")
+            "d n" '(next-buffer :wk "Next buffer")
+            "d p" '(previous-buffer :wk "Previous buffer")
+            "d r" '(revert-buffer :wk "Reload buffer")
+            "d v" '(dired :wk "Open dired")
+            "d j" '(dired-jump :wk "Dired jump to current"))
 
-        "e l" '(consult-flymake :wk "Consult Flymake")
-        "e n" '(flymake-goto-next-error :wk "Flymake next error")
-        "e p" '(flymake-goto-prev-error :wk "Flymake previous error")
+          (start/leader-keys
+            "e" '(:ignore t :wk "Languages")
+            "e e" '(eglot-reconnect :wk "Eglot Reconnect")
+            "e d" '(eldoc-doc-buffer :wk "Eldoc Buffer")
+            "e f" '(eglot-format :wk "Eglot Format")
 
-        "e a" '(eglot-code-actions :wk "Eglot code actions")
-        "e r" '(eglot-rename :wk "Eglot Rename")
-        "e i" '(xref-find-definitions :wk "Find definition")
-        "e s" '(xref-find-references :wk "Find references")
+            "e l" '(consult-flymake :wk "Consult Flymake")
+            "e n" '(flymake-goto-next-error :wk "Flymake next error")
+            "e p" '(flymake-goto-prev-error :wk "Flymake previous error")
 
-        "e v" '(:ignore t :wk "Elisp")
-        "e v b" '(eval-buffer :wk "Evaluate elisp in buffer")
-        "e v r" '(eval-region :wk "Evaluate elisp in region"))
+            "e a" '(eglot-code-actions :wk "Eglot code actions")
+            "e r" '(eglot-rename :wk "Eglot Rename")
+            "e i" '(xref-find-definitions :wk "Find definition")
+            "e s" '(xref-find-references :wk "Find references")
 
-      (start/leader-keys
-        "g" '(:ignore t :wk "Git")
-        "g s" '(magit-status :wk "Magit status"))
+            "e v" '(:ignore t :wk "Elisp")
+            "e v b" '(eval-buffer :wk "Evaluate elisp in buffer")
+            "e v r" '(eval-region :wk "Evaluate elisp in region"))
 
-      (start/leader-keys
-        "r" '(:ignore t :wk "Reload & Packages") ;; To get more help use C-h commands (describe variable, function, etc.)
-        ;; Mason.el
-        "r m" '(mason-manager :wk "Mason manager")
-        "r i" '(mason-install :wk "Mason install")
-        ;; Package-menu-mode
-        "r p" '(list-packages :wk "List packages")
-        "r c" '(package-menu-clear-filter :wk "Package clear filters")
-        "r n" '(package-menu-filter-by-name :wk "Package filter by name")
-        "r N" '(package-menu-filter-by-name-or-description :wk "Package filter by name or descriptions")
-        "r s" '(package-menu-filter-by-status :wk "Package filter by status")
-        "r u" '(package-menu-filter-upgradable :wk "Package filter by upgradable")
+          (start/leader-keys
+            "g" '(:ignore t :wk "Git")
+            "g s" '(magit-status :wk "Magit status"))
 
-        "r q" '(save-buffers-kill-emacs :wk "Quit Emacs and Daemon")
-        "r r" '(start/reload-config :wk "Reload Emacs config"))
+          (start/leader-keys
+            "r" '(:ignore t :wk "Reload & Packages") ;; To get more help use C-h commands (describe variable, function, etc.)
+            ;; Mason.el
+            "r m" '(mason-manager :wk "Mason manager")
+            "r i" '(mason-install :wk "Mason install")
+            ;; Package-menu-mode
+            "r p" '(list-packages :wk "List packages")
+            "r c" '(package-menu-clear-filter :wk "Package clear filters")
+            "r n" '(package-menu-filter-by-name :wk "Package filter by name")
+            "r N" '(package-menu-filter-by-name-or-description :wk "Package filter by name or descriptions")
+            "r s" '(package-menu-filter-by-status :wk "Package filter by status")
+            "r u" '(package-menu-filter-upgradable :wk "Package filter by upgradable")
 
-      (start/leader-keys
-        "t" '(:ignore t :wk "Toggle")
-        "t t" '(visual-line-mode :wk "Toggle truncated lines (wrap)")
-        "t l" '(display-line-numbers-mode :wk "Toggle line numbers"))
-      )
+            "r q" '(save-buffers-kill-emacs :wk "Quit Emacs and Daemon")
+            "r r" '(start/reload-config :wk "Reload Emacs config"))
 
-    ;; Fix general.el leader key not working instantly in messages buffer with evil mode
-    ;;(use-package emacs
-    ;;  :after (evil general)
-    ;;  :ghook ('after-init-hook
-    ;;          (lambda (&rest _)
-    ;;            (when-let ((messages-buffer (get-buffer "*Messages*")))
-    ;;              (with-current-buffer messages-buffer
-    ;;                (evil-normalize-keymaps))))
-    ;;          nil nil t))
+          (start/leader-keys
+            "t" '(:ignore t :wk "Toggle")
+            "t t" '(visual-line-mode :wk "Toggle truncated lines (wrap)")
+            "t l" '(display-line-numbers-mode :wk "Toggle line numbers"))
+          )
+
+        ;; Fix general.el leader key not working instantly in messages buffer with evil mode
+        ;;(use-package emacs
+        ;;  :after (evil general)
+        ;;  :ghook ('after-init-hook
+        ;;          (lambda (&rest _)
+        ;;            (when-let ((messages-buffer (get-buffer "*Messages*")))
+        ;;              (with-current-buffer messages-buffer
+        ;;                (evil-normalize-keymaps))))
+        ;;          nil nil t))
 #+end_src
 
 *** Creating keybindings the built in way
@@ -747,7 +771,7 @@ This theme is something that Brian prefers a lot more.
     (use-package kanagawa-themes
       :ensure t
       :config
-      (load-theme 'kanagawa-dragon t))
+      (load-theme 'modus-operandi t))
 #+end_src
 
 ** Transparency
@@ -843,13 +867,15 @@ If you want to use LSP mode check out their [[https://emacs-lsp.github.io/lsp-mo
 #+begin_src emacs-lisp
     (use-package go-mode)
     (use-package haskell-mode)
+    (use-package zig-mode)
     (use-package eglot
       :ensure nil ;; Don't install eglot because it's now built-in
       :hook ((c-mode ;; Autostart lsp servers for a given mode
               c++-mode
               haskell-mode
               lua-mode
-              go-mode) ;; Lua-mode needs to be installed
+              go-mode
+              typst-ts-mode) ;; Lua-mode needs to be installed
              . eglot-ensure)
       :config
       (setq-default eglot-workspace-configuration
@@ -861,10 +887,9 @@ If you want to use LSP mode check out their [[https://emacs-lsp.github.io/lsp-mo
       (eglot-autoshutdown t);; Shutdown unused servers.
       (eglot-report-progress nil) ;; Disable LSP server logs (Don't show lsp messages at the bottom, java)
       ;; Manual lsp servers
-      ;;:config
-      ;;(add-to-list 'eglot-server-programs
-      ;;             `(lua-mode . ("PATH_TO_THE_LSP_FOLDER/bin/lua-language-server" "-lsp"))) ;; Adds our lua lsp server to eglot's server list
-      )
+      :config
+      (add-to-list 'eglot-server-programs
+                   '(typst-ts-mode . ("tinymist"))))
 #+end_src
 
 ** Mason.el
@@ -1137,6 +1162,29 @@ To prove that I'm enough
     (use-package proof-general
       :ensure t)
 #+end_src
+
+** Company Coq
+
+Quality of life plugin for rocq (displays nice forall etc)
+
+#+begin_src emacs-lisp
+    (use-package company-coq
+      :ensure t
+      :after proof-general
+      :hook
+      (coq-mode . brian/coq-company-setup))
+#+end_src
+
+Since company coq uses company (shocking...) we have to disable corfu
+just for this.
+
+#+begin_src emacs-lisp
+    (defun brian/coq-company-setup ()
+      (corfu-mode -1)
+      (company-mode 1)
+      (company-coq-mode 1))
+#+end_src
+
 ** LaTeX
 
 We use AUCTeX for editing, compiling, and navigating TeX files.
@@ -1145,15 +1193,29 @@ We use AUCTeX for editing, compiling, and navigating TeX files.
     (use-package tex
       :ensure auctex
       :defer t
+      :hook
+      ((LaTeX-mode . TeX-source-correlate-mode)
+       (LaTeX-mode . reftex-mode))
       :config
-      (setq TeX-auto-save t)
-      (setq TeX-parse-self t)
-      (setq TeX-save-query nil)
-      (setq TeX-command-default "LatexMk")
-      (setq TeX-source-correlate-mode t)
-      (setq TeX-source-correlate-start-server t)
-      (setq TeX-PDF-mode t)
-      (setq TeX-view-program-selection '((output-pdf "PDF Tools"))))
+      (setq TeX-auto-save t
+            TeX-parse-self t
+            TeX-save-query nil
+            TeX-command-default "LatexMk"
+            TeX-source-correlate-method 'synctex
+            TeX-source-correlate-start-server t
+            TeX-PDF-mode t
+            TeX-view-program-selection '((output-pdf "PDF Tools"))
+            TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+            reftex-plug-into-AUCTeX t)
+
+      (add-to-list 'TeX-command-list
+                   '("LatexMk"
+                     "latexmk -pdf -synctex=1 -interaction=nonstopmode %s"
+                     TeX-run-TeX nil t
+                     :help "Run latexmk"))
+
+      (add-hook 'TeX-after-compilation-finished-functions
+                #'TeX-revert-document-buffer))
 #+end_src
 
 ** RefTeX
@@ -1175,10 +1237,120 @@ This lets Emacs preview PDFs directly.
 #+begin_src emacs-lisp
     (use-package pdf-tools
       :ensure t
-      :mode ("\.pdf\'" . pdf-view-mode)
+      :mode ("\\.pdf\\'" . pdf-view-mode)
       :config
       (pdf-tools-install)
-      (add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1))))
+
+      ;; Work around macOS multi-monitor bug where pdf-tools SyncTeX
+      ;; arrow tooltips appear on the wrong monitor.
+      (with-eval-after-load 'pdf-util
+        (defvar brian/pdf-sync-arrow-frame nil)
+        (defvar brian/pdf-sync-arrow-timer nil)
+
+        (defun brian/pdf-sync-arrow-hide ()
+          (when (timerp brian/pdf-sync-arrow-timer)
+            (cancel-timer brian/pdf-sync-arrow-timer)
+            (setq brian/pdf-sync-arrow-timer nil))
+          (when (frame-live-p brian/pdf-sync-arrow-frame)
+            (delete-frame brian/pdf-sync-arrow-frame))
+          (setq brian/pdf-sync-arrow-frame nil))
+
+        (defun brian/pdf-sync-arrow-show-in-window (text x y &optional window timeout)
+          "Show pdf-tools SyncTeX arrow TEXT at X,Y inside WINDOW."
+          (let* ((window (or window (selected-window)))
+                 (parent (window-frame window))
+                 (left (+ (window-pixel-left window) (round x)))
+                 (top  (+ (window-pixel-top window)  (round y)))
+                 (buf (get-buffer-create " *pdf-sync-arrow*")))
+            (brian/pdf-sync-arrow-hide)
+            (with-current-buffer buf
+              (erase-buffer)
+              (setq-local mode-line-format nil)
+              (setq-local cursor-type nil)
+              (insert text))
+            (setq brian/pdf-sync-arrow-frame
+                  (make-frame
+                   `((parent-frame . ,parent)
+                     (left . ,left)
+                     (top . ,top)
+                     (width . 2)
+                     (height . 1)
+                     (minibuffer . nil)
+                     (undecorated . t)
+                     (unsplittable . t)
+                     (no-accept-focus . t)
+                     (no-focus-on-map . t)
+                     (visibility . nil)
+                     (internal-border-width . 0)
+                     (border-width . 0)
+                     (left-fringe . 0)
+                     (right-fringe . 0)
+                     (vertical-scroll-bars . nil)
+                     (horizontal-scroll-bars . nil)
+                     (menu-bar-lines . 0)
+                     (tool-bar-lines . 0))))
+            (set-window-buffer (frame-root-window brian/pdf-sync-arrow-frame) buf)
+            (make-frame-visible brian/pdf-sync-arrow-frame)
+            (setq brian/pdf-sync-arrow-timer
+                  (run-at-time (or timeout 3)
+                               nil
+                               #'brian/pdf-sync-arrow-hide))))
+
+        ;; Override pdf-tools' tooltip placement with child-frame placement.
+        (defun pdf-util-tooltip-in-window (text x y &optional window)
+          (brian/pdf-sync-arrow-show-in-window
+           text
+           x
+           y
+           window
+           (if (boundp 'tooltip-hide-delay)
+               tooltip-hide-delay
+             3))))
+
+      ;; Needed for SyncTeX backward search from PDF to source.
+      (add-hook 'pdf-view-mode-hook #'pdf-sync-minor-mode)
+
+      (add-hook 'pdf-view-mode-hook
+                (lambda ()
+                  (display-line-numbers-mode -1))))
+#+end_src
+** Org Roam
+Using org roam to organise knowledge and general notetaking
+#+begin_src emacs-lisp
+    (use-package org-roam
+      :ensure t
+      :init
+      (setq org-roam-v2-ack t)
+      :custom
+      (org-roam-directory (file-truename "~/notes/"))
+      (org-roam-db-location "~/notes/org-roam.db")
+      :config
+      (org-roam-db-autosync-mode))
+#+end_src
+* Teaching
+** Typst
+Here I have to install `typst-ts-mode' to be able to make slides
+#+begin_src emacs-lisp
+    (use-package typst-preview
+      :ensure t
+      :hook
+      (typst-ts-mode . typst-preview-mode)
+
+      :custom
+      (typst-preview-autostart t)
+      (typst-preview-open-browser-automatically t)
+      (typst-preview-invert-colors "never")
+
+      :bind
+      (:map typst-preview-mode-map
+            ("C-c C-j" . typst-preview-send-position)))
+#+end_src
+
+
+#+begin_src emacs-lisp
+    (use-package typst-ts-mode
+      :vc (:url "https://codeberg.org/meow_king/typst-ts-mode.git")
+      :mode ("\\.typ\\'" . typst-ts-mode))
 #+end_src
 * Multi File Example
 ** Adding the lisp directory to load-path
@@ -1299,7 +1471,7 @@ Read the [[https://github.com/minad/cape#configuration][configuration section]] 
                              ;; #'cape-line         ;; Complete entire line from current buffer
                              ;; #'cape-history      ;; Complete from Eshell, Comint or minibuffer history
                              ;; #'cape-dict         ;; Dictionary completion (Needs Dictionary file installed)
-                             ;; #'cape-tex          ;; Complete Unicode char from TeX command, e.g. \hbar
+                             #'cape-tex          ;; Complete Unicode char from TeX command, e.g. \hbar
                              ;; #'cape-sgml         ;; Complete Unicode char from SGML entity, e.g., &alpha
                              ;; #'cape-rfc1345      ;; Complete Unicode char using RFC 1345 mnemonics
                              ;; #'snippy-capf       ;; Vscode Snippets (Snippy needs to be installed)
@@ -1534,8 +1706,8 @@ Highlight TODO keywords.
 Show indentation.
 #+begin_src emacs-lisp
     (use-package indent-guide
-      :hook
-      (prog-mode . indent-guide-mode)
+      ;; :hook
+      ;; (prog-mode . indent-guide-mode)
       :config
       (setq indent-guide-char "|")) ;; Set the character used for the indent guide.
 #+end_src
