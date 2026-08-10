@@ -1,5 +1,4 @@
-vim.g.vimtex_view_method = "sioyek"
-vim.g.vimtex_view_sioyek_exe = "/opt/homebrew/bin/sioyek"
+vim.g.vimtex_view_method = "zathura"
 vim.g.vimtex_compiler_method = "latexmk"
 
 vim.pack.add({
@@ -13,6 +12,9 @@ vim.pack.add({
 })
 
 local setkeymap = vim.keymap.set
+
+-- mini status line ----------------------
+require("mini.statusline").setup()
 
 -- mini files ----------------------------
 require("mini.files").setup({
