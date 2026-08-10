@@ -27,6 +27,7 @@
 (add-hook 'emacs-startup-hook #'start/display-startup-time)
 
 (require 'use-package-ensure) ;; Load use-package-always-ensure
+(setq package-install-upgrade-built-in t)
 (setq use-package-always-ensure t) ;; Always ensures that a package is installed
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/") ;; Sets default package repositories
@@ -315,7 +316,15 @@
 (use-package kanagawa-themes
   :ensure t
   :config
-  (load-theme 'modus-operandi t))
+  (load-theme 'ef-symbiosis t))
+
+(use-package modus-themes
+  :ensure t)
+
+(use-package ef-themes
+  :ensure t
+  :config
+  (setq ef-themes-to-toggle '(ef-night ef-maris-dark)))
 
 (add-to-list 'default-frame-alist '(alpha-background . 90)) ;; For all new frames henceforth
 
@@ -353,7 +362,9 @@
   :ensure t)
 
 (use-package go-mode)
-(use-package haskell-mode)
+(use-package haskell-mode
+  :ensure t
+  :mode "\\.hs\\'")
 (use-package zig-mode)
 (use-package eglot
   :ensure nil ;; Don't install eglot because it's now built-in
@@ -370,7 +381,7 @@
                                     :formattingProvider "fourmolu")))
   :custom
   ;; Good default
-  (eglot-events-buffer-size 0) ;; No event buffers (LSP server logs)
+  (eglot-events-buffer-size 200000) ;; No event buffers (LSP server logs)
   (eglot-autoshutdown t);; Shutdown unused servers.
   (eglot-report-progress nil) ;; Disable LSP server logs (Don't show lsp messages at the bottom, java)
   ;; Manual lsp servers
@@ -445,7 +456,6 @@
 (setq major-mode-remap-alist
       '((yaml-mode . yaml-ts-mode)
         (sh-mode . bash-ts-mode)
-        (haskell-mode . haskell-ts-mode)
         (c-mode . c-ts-mode)
         (c++-mode . c++-ts-mode)
         (css-mode . css-ts-mode)

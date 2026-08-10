@@ -1,3 +1,5 @@
+.DS_Store
+
 # Emacs package/runtime state
 /emacs/dot-config/emacs/eln-cache/
 /emacs/dot-config/emacs/persist/

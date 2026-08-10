@@ -3,7 +3,7 @@ return {
   -- for haskell
   {
     'mrcjkb/haskell-tools.nvim',
-    version = '^7',     -- Recommended
+    version = '^10',     -- Recommended
     lazy = false
   },
   -- plugin to help manage and install lsp
@@ -38,7 +38,7 @@ return {
         { "<leader>r",  group = "[r]ename" },
       })
       -- K for hover duh haha
-      vim.diagnostic.config({ virtual_text = true, jump = { float = true } })
+      vim.diagnostic.config({ virtual_text = true, jump = { on_jump = true } })
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover" })
       vim.keymap.set({ 'n' }, '<leader>rn', vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
     end

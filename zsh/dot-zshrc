@@ -2,6 +2,17 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=~/.local/bin:$PATH
 
+# android emulator cli stuff
+export ANDROID_HOME=$HOME/Android
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator
+
+PLAN9=/Users/bc/9/plan9port
+export PLAN9
+PATH=$PATH:$PLAN9/bin
+export PATH
+
 # Add brew to path
 export HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
@@ -31,7 +42,7 @@ export PATH=~/.cabal/bin:$PATH
 
 # Don't have to set a theme since it is already sourced and set when
 # I source headline.zsh-theme
-ZSH_THEME="funky"
+# ZSH_THEME="funky"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -193,3 +204,5 @@ export NVM_DIR="$HOME/.nvm"
 # This section can be safely removed at any time if needed.
 [[ ! -r '/Users/bc/.opam/opam-init/init.zsh' ]] || source '/Users/bc/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/acme.omp.json)"
+

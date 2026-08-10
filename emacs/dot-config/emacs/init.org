@@ -1,4 +1,4 @@
-h#+Title: Kickstart.emacs
+#+Title: Kickstart.emacs
 #+Author: MiniApollo
 #+Description: Blazingly fast starting point for your Emacs configuration.
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
@@ -295,6 +295,7 @@ This code eliminates the need to type :ensure t for each package download.
 Instead, you'll only need to use :ensure nil when you want to explicitly prevent a package from being downloaded.
 #+begin_src emacs-lisp
     (require 'use-package-ensure) ;; Load use-package-always-ensure
+    (setq package-install-upgrade-built-in t)
     (setq use-package-always-ensure t) ;; Always ensures that a package is installed
 #+end_src
 
@@ -771,7 +772,15 @@ This theme is something that Brian prefers a lot more.
     (use-package kanagawa-themes
       :ensure t
       :config
-      (load-theme 'modus-operandi t))
+      (load-theme 'ef-symbiosis t))
+
+    (use-package modus-themes
+      :ensure t)
+
+    (use-package ef-themes
+      :ensure t
+      :config
+      (setq ef-themes-to-toggle '(ef-night ef-maris-dark)))
 #+end_src
 
 ** Transparency
@@ -866,7 +875,9 @@ We don't use it because Eglot is more than enough for most people.
 If you want to use LSP mode check out their [[https://emacs-lsp.github.io/lsp-mode/][documentation]] or the [[https://github.com/MiniApollo/kickstart.emacs/wiki][project wiki]] page for more information.
 #+begin_src emacs-lisp
     (use-package go-mode)
-    (use-package haskell-mode)
+    (use-package haskell-mode
+      :ensure t
+      :mode "\\.hs\\'")
     (use-package zig-mode)
     (use-package eglot
       :ensure nil ;; Don't install eglot because it's now built-in
@@ -883,7 +894,7 @@ If you want to use LSP mode check out their [[https://emacs-lsp.github.io/lsp-mo
                                         :formattingProvider "fourmolu")))
       :custom
       ;; Good default
-      (eglot-events-buffer-size 0) ;; No event buffers (LSP server logs)
+      (eglot-events-buffer-size 200000) ;; No event buffers (LSP server logs)
       (eglot-autoshutdown t);; Shutdown unused servers.
       (eglot-report-progress nil) ;; Disable LSP server logs (Don't show lsp messages at the bottom, java)
       ;; Manual lsp servers
@@ -1014,7 +1025,6 @@ To explore the current buffer's syntax tree, use the treesit-explore-mode comman
     (setq major-mode-remap-alist
           '((yaml-mode . yaml-ts-mode)
             (sh-mode . bash-ts-mode)
-            (haskell-mode . haskell-ts-mode)
             (c-mode . c-ts-mode)
             (c++-mode . c++-ts-mode)
             (css-mode . css-ts-mode)
