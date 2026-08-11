@@ -175,3 +175,25 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/acme.omp.json)"
 
+
+# pnpm
+export PNPM_HOME="/home/bc/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+# fnm
+FNM_PATH="/home/bc/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
+
+# fnm
+FNM_PATH="/home/bc/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
