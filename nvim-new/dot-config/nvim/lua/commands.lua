@@ -26,3 +26,6 @@ vim.api.nvim_create_user_command('PackClean', function()
   vim.notify("Cleaned all inactive plugins.", vim.log.levels.INFO)
 end, { desc = "Delete all inactive plugins" })
 
+vim.api.nvim_create_user_command("LspLog", function()
+  vim.cmd.edit(vim.fn.fnameescape(vim.lsp.log.get_filename()))
+end, { desc = "Open the Neovim LSP log" })

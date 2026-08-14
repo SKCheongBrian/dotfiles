@@ -1,4 +1,8 @@
-require("mason").setup()
+require("mason").setup({
+  ui = {
+    border = "single",
+  },
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
@@ -49,7 +53,23 @@ vim.lsp.config("texlab", {
   }
 })
 
+vim.filetype.add({
+  extension = {
+    fix = "fixen",
+    fixen = "fixen",
+  },
+})
+
+vim.lsp.config("fixen_lsp", {
+  cmd = {
+    "/Users/bc/projects/fixen/fixen-lsp/dist-newstyle/build/aarch64-osx/ghc-9.12.2/fixen-lsp-0.1.0.0/x/fixen-lsp/build/fixen-lsp/fixen-lsp",
+  },
+  filetypes = { "fixen" },
+  root_markers = { "cabal.project", ".git" },
+})
+
 vim.lsp.enable({
+  "fixen_lsp",
   "lua_ls",
   "jdtls",
   "ts_ls",

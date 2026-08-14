@@ -10,6 +10,7 @@ vim.pack.add({
   "https://github.com/mason-org/mason.nvim",
   { src = 'https://github.com/mrcjkb/haskell-tools.nvim',       version = vim.version.range('^10') },
   "https://github.com/lervag/vimtex",
+  "https://github.com/Julian/lean.nvim",
 })
 
 local setkeymap = vim.keymap.set
@@ -133,3 +134,7 @@ MiniClue.setup({
 
 -- lsp -----------------------------------
 require("lsp")
+
+-- lean ----------------------------------
+local Lean = require("lean")
+vim.g.lean_config = { mapping = true }
