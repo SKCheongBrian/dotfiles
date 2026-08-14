@@ -1,5 +1,4 @@
 {
-  "$schema": "https://github.com",
   "logo": {
     "type": "kitty",
     "source": "~/phd/spike.jpeg",

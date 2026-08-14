@@ -1,0 +1,6 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export PLAN9:/home/bc/src/plan9port/
+SETUVAR __fish_initialized:4300
+SETUVAR fish_greeting:
+SETUVAR fish_user_paths:/home/bc/go/bin\x1e/usr/local/go/bin\x1e/home/bc/\x2elocal/bin\x1e/home/bc/\x2eghcup/bin\x1e/home/bc/\x2elocal/share/pnpm\x1e/home/bc/\x2elocal/share/pnpm/bin

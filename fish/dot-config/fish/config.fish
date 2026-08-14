@@ -6,6 +6,9 @@ set -gx PNPM_HOME $HOME/.local/share/pnpm
 fish_add_path $PNPM_HOME
 fish_add_path $PNPM_HOME/bin
 
+set -gx PLAN9 $HOME/src/plan9port
+set -gx PATH $PATH $PLAN9/bin
+
 if set -q SSH_CONNECTION
   set -gx EDITOR vim
 else

@@ -49,8 +49,15 @@ vim.lsp.config("texlab", {
   }
 })
 
+vim.lsp.log.set_level 'trace'
+vim.api.nvim_create_user_command("LspLog", function()
+  vim.cmd.edit(vim.lsp.log.get_filename())
+end, {})
+
 vim.lsp.enable({
+  "fixen_lsp",
   "lua_ls",
+  "gopls",
   "jdtls",
   "ts_ls",
   "texlab",
