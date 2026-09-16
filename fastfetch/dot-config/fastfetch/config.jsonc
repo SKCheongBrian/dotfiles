@@ -1,0 +1,18 @@
+{
+  "logo": {
+    "type": "kitty",
+    "source": "~/phd/spike.jpeg",
+  },
+  "modules": [
+    // Your usual fastfetch modules go here
+    "title",
+    "os",
+    "kernel",
+    "shell",
+    "terminal",
+    "uptime",
+    "cpu",
+    "gpu",
+    "colors"
+  ]
+}

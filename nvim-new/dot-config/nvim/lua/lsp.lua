@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     setkeymap("i", "<C-s>", vim.lsp.buf.signature_help, opts)
     setkeymap("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Show documentation" }))
     setkeymap("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
+    setkeymap("n", "<leader>gh", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
     setkeymap("n", "<leader>cf", vim.lsp.buf.format, vim.tbl_extend("force", opts, { desc = "[f]ormat" }))
   end
 })
@@ -74,4 +75,7 @@ vim.lsp.enable({
   "jdtls",
   "ts_ls",
   "texlab",
+  "gopls",
+  "rust_analyzer",
+  "pyright",
 })

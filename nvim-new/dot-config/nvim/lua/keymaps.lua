@@ -2,6 +2,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local setkey = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+setkey({ "n", "v" }, "j", "gj", opts)
+setkey({ "n", "v" }, "k", "gk", opts)
 
 -- replaces selected text without losing yanked text
 setkey("x", "p", [["_dP]], { desc = "Past over selection without losing yanked text" })

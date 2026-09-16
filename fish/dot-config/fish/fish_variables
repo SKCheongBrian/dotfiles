@@ -3,4 +3,4 @@
 SETUVAR --export PLAN9:/home/bc/src/plan9port/
 SETUVAR __fish_initialized:4300
 SETUVAR fish_greeting:
-SETUVAR fish_user_paths:/home/bc/go/bin\x1e/usr/local/go/bin\x1e/home/bc/\x2elocal/bin\x1e/home/bc/\x2eghcup/bin\x1e/home/bc/\x2elocal/share/pnpm\x1e/home/bc/\x2elocal/share/pnpm/bin
+SETUVAR fish_user_paths:/Users/bc/\x2eopam/CP\x2e2025\x2e08\x2e0\x7e9\x2e0\x7e2025\x2e08/bin\x1e/Users/bc/\x2eopam/default/bin\x1e/Users/bc/\x2econfig/emacs/bin\x1e/Users/bc/\x2eelan/bin\x1e/Users/bc/\x2eghcup/bin\x1e/Users/bc/\x2ecabal/bin\x1e/Users/bc/\x2elocal/bin\x1e/home/bc/go/bin\x1e/usr/local/go/bin\x1e/home/bc/\x2elocal/bin\x1e/home/bc/\x2eghcup/bin\x1e/home/bc/\x2elocal/share/pnpm\x1e/home/bc/\x2elocal/share/pnpm/bin

@@ -1,4 +1,6 @@
-vim.g.vimtex_view_method = "sioyek"
+vim.g.vimtex_view_method = "skim"
+vim.g.vimtex_view_skim_sync = 1
+vim.g.vimtex_view_skim_activate = 1
 vim.g.vimtex_view_sioyek_exe = "/opt/homebrew/bin/sioyek"
 vim.g.vimtex_compiler_method = "latexmk"
 
@@ -11,9 +13,45 @@ vim.pack.add({
   { src = 'https://github.com/mrcjkb/haskell-tools.nvim',       version = vim.version.range('^10') },
   "https://github.com/lervag/vimtex",
   "https://github.com/Julian/lean.nvim",
+  "https://github.com/rose-pine/neovim",
+  "https://github.com/metalelf0/black-metal-theme-neovim",
+  {
+    src = "https://github.com/obsidian-nvim/obsidian.nvim",
+    version = vim.version.range "*", -- use latest release, remove to use latest commit
+  },
+  "https://github.com/yorik1984/newpaper.nvim",
+  "https://github.com/chomosuke/typst-preview.nvim",
+  "https://github.com/Julian/lean.nvim",
 })
 
 local setkeymap = vim.keymap.set
+
+-- Lean ------------------------------------------
+vim.g.lean_config = { mappings = true }
+
+-- Typst Preview ---------------------------------
+local TypstPreview = require("typst-preview")
+TypstPreview.setup({})
+
+-- Obsidian ------------------------------
+local Obsidian = require("obsidian")
+Obsidian.setup({
+  legacy_commands = false, -- this will be removed in 4.0.0
+  workspaces = {
+    {
+      name = "personal",
+      path = "~/Desktop/spike-vault",
+    },
+  },
+  picker = {
+    name = "mini.pick",
+  },
+})
+
+-- black metal theme ---------------------
+-- local BlackMetal = require("black-metal")
+-- BlackMetal.setup()
+-- BlackMetal.load()
 
 -- mini files ----------------------------
 require("mini.files").setup({
@@ -59,6 +97,7 @@ MiniExtra.setup()
 setkeymap("n", "<leader>ff", function() MiniPick.builtin.files() end, { desc = "[f]ile" })
 setkeymap("n", "<leader>fg", function() MiniPick.builtin.grep_live() end, { desc = "[g]rep" })
 setkeymap("n", "<leader>fh", function() MiniPick.builtin.help() end, { desc = "[h]elp" })
+setkeymap("n", "<leader>fb", function() MiniPick.builtin.buffers() end, { desc = "[b]uffers" })
 
 setkeymap("n", "<leader>xx", function() MiniExtra.pickers.diagnostic() end, { desc = "Mini Picker diagnostics" })
 setkeymap("n", "<leader>fk", function() MiniExtra.pickers.keymaps() end, { desc = "[k]eymap help" })

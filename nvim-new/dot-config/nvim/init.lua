@@ -6,4 +6,4 @@ require("commands")
 require("pack")
 require("treesitter")
 
-vim.cmd.colorscheme("acme")
+vim.cmd.colorscheme("newpaper")
