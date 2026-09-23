@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 pass_entry=$(find ~/.password-store/ -type f -name "*.gpg" | sed "s|${HOME}/.password-store/||;s|\.gpg$||" | fzf)
 

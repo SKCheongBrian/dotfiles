@@ -34,19 +34,19 @@ local TypstPreview = require("typst-preview")
 TypstPreview.setup({})
 
 -- Obsidian ------------------------------
-local Obsidian = require("obsidian")
-Obsidian.setup({
-  legacy_commands = false, -- this will be removed in 4.0.0
-  workspaces = {
-    {
-      name = "personal",
-      path = "~/Desktop/spike-vault",
-    },
-  },
-  picker = {
-    name = "mini.pick",
-  },
-})
+-- local Obsidian = require("obsidian")
+-- Obsidian.setup({
+--   legacy_commands = false, -- this will be removed in 4.0.0
+--   workspaces = {
+--     {
+--       name = "personal",
+--       path = "~/Desktop/spike-vault",
+--     },
+--   },
+--   picker = {
+--     name = "mini.pick",
+--   },
+-- })
 
 -- black metal theme ---------------------
 -- local BlackMetal = require("black-metal")
