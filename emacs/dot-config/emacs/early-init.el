@@ -29,10 +29,10 @@
 
 ;; Fix white flash on startup
 ;; Don't do it when using daemon or terminal, because it messes up the background color.
-;; (unless (or (daemonp) (not initial-window-system))
-;;   (setq default-frame-alist '(
-;;                               (foreground-color . "white")
-;;                               (background-color . "#181818"))))
+(unless (or (daemonp) (not initial-window-system))
+  (setq default-frame-alist '(
+                              (foreground-color . "white")
+                              (background-color . "#0f0f0f"))))
 
 ;; Disable UI elements before UI initialization.
 ;; For faster startup times. It gives 0.05 sec.
@@ -45,7 +45,7 @@
 (set-face-attribute 'default nil
                     :family "Aporetic Sans Mono"
                     :weight 'regular
-                    :height 140)
+                    :height 180)
 
 (add-to-list 'default-frame-alist
              '(font . "Aporetic Sans Mono"))
