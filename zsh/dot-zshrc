@@ -8,6 +8,9 @@ export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/emulator
 
+# for kitten
+export PATH="/Applications/kitty.app/Contents/MacOS:$PATH"
+
 PLAN9=/Users/bc/9/plan9port
 export PLAN9
 PATH=$PATH:$PLAN9/bin
@@ -17,6 +20,7 @@ export PATH
 export HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:$PATH"
 fpath[1,0]="/opt/homebrew/share/zsh/site-functions";
 export FPATH;
 eval "$(/usr/bin/env PATH_HELPER_ROOT="/opt/homebrew" /usr/libexec/path_helper -s)"

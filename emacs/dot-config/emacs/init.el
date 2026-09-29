@@ -101,11 +101,19 @@
   ;; Move customization variables to a separate file and load it, avoid filling up init.el with unnecessary variables
   (setq custom-file (locate-user-emacs-file "custom-vars.el"))
   (load custom-file 'noerror 'nomessage)
+  (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
   (when (eq system-type 'darwin)
-    (setq insert-directory-program "gls"
-          dired-use-ls-dired t
-          dired-listing-switches "-alh --group-directories-first"
-          ns-command-modifier 'meta
+    ;; GUI Emacs may start without Homebrew in `exec-path'.
+    (let ((gls (or (executable-find "gls")
+                   (seq-find #'file-executable-p
+                             '("/opt/homebrew/bin/gls"
+                               "/usr/local/bin/gls")))))
+      (setq insert-directory-program (or gls "/bin/ls")
+            dired-use-ls-dired (and gls t)
+            dired-listing-switches (if gls
+                                       "-alh --group-directories-first"
+                                     "-alh")))
+    (setq ns-command-modifier 'meta
           ns-option-modifer 'super))
   :bind (
          ([escape] . keyboard-quit) ;; Makes Escape quit prompts (Minibuffer Escape)
@@ -316,7 +324,7 @@
 (use-package kanagawa-themes
   :ensure t
   :config
-  (load-theme 'ef-symbiosis t))
+  (load-theme 'spike t))
 
 (use-package modus-themes
   :ensure t)
@@ -361,6 +369,21 @@
 (use-package markdown-mode
   :ensure t)
 
+(use-package tuareg
+  :ensure t
+  :mode (("\\.ml\\'" . tuareg-mode)
+         ("\\.mli\\'" . tuareg-mode)
+         ("\\.ocamlinit\\'" . tuareg-mode))
+  :hook (tuareg-mode . eglot-ensure))
+(use-package dune
+  :ensure t)
+
+(use-package utop
+  :ensure t
+  :config
+  (setq utop-command "opam exec -- utop -- -emacs")
+  :hook (tuareg-mode . utop-minor-mode))
+
 (use-package go-mode)
 (use-package haskell-mode
   :ensure t
@@ -387,7 +410,9 @@
   ;; Manual lsp servers
   :config
   (add-to-list 'eglot-server-programs
-               '(typst-ts-mode . ("tinymist"))))
+               '(typst-ts-mode . ("tinymist")))
+  (add-to-list 'eglot-server-programs
+               '(tuareg-mode . ("ocamllsp"))))
 
 (use-package mason
   :hook (after-init . mason-ensure))

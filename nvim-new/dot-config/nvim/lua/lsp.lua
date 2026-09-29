@@ -69,7 +69,17 @@ vim.lsp.config("fixen_lsp", {
   root_markers = { "cabal.project", ".git" },
 })
 
+-- Use the opam environment selected for each OCaml project.
+vim.lsp.config("ocamllsp", {
+  cmd = function(dispatchers, config)
+    return vim.lsp.rpc.start({ "opam", "exec", "--", "ocamllsp" }, dispatchers, {
+      cwd = config.root_dir,
+    })
+  end,
+})
+
 vim.lsp.enable({
+  "ocamllsp",
   "fixen_lsp",
   "lua_ls",
   "jdtls",

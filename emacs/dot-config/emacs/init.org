@@ -433,11 +433,19 @@ Only works with package.el.
       ;; Move customization variables to a separate file and load it, avoid filling up init.el with unnecessary variables
       (setq custom-file (locate-user-emacs-file "custom-vars.el"))
       (load custom-file 'noerror 'nomessage)
+      (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
       (when (eq system-type 'darwin)
-        (setq insert-directory-program "gls"
-              dired-use-ls-dired t
-              dired-listing-switches "-alh --group-directories-first"
-              ns-command-modifier 'meta
+        ;; GUI Emacs may start without Homebrew in `exec-path'.
+        (let ((gls (or (executable-find "gls")
+                       (seq-find #'file-executable-p
+                                 '("/opt/homebrew/bin/gls"
+                                   "/usr/local/bin/gls")))))
+          (setq insert-directory-program (or gls "/bin/ls")
+                dired-use-ls-dired (and gls t)
+                dired-listing-switches (if gls
+                                           "-alh --group-directories-first"
+                                         "-alh")))
+        (setq ns-command-modifier 'meta
               ns-option-modifer 'super))
       :bind (
              ([escape] . keyboard-quit) ;; Makes Escape quit prompts (Minibuffer Escape)
@@ -763,8 +771,7 @@ Use consult-theme to easily try out themes (*Epilepsy* Warning).
 #+begin_src emacs-lisp :tangle no
     (use-package gruvbox-theme
       :config
-      (setq gruvbox-bold-constructs t)
-      (load-theme 'gruvbox-dark-medium t)) ;; We need to add t to trust this package
+      (setq gruvbox-bold-constructs t)) ;; We need to add t to trust this package
 #+end_src
 
 This theme is something that Brian prefers a lot more.
@@ -772,7 +779,7 @@ This theme is something that Brian prefers a lot more.
     (use-package kanagawa-themes
       :ensure t
       :config
-      (load-theme 'ef-symbiosis t))
+      (load-theme 'spike t))
 
     (use-package modus-themes
       :ensure t)
@@ -874,6 +881,21 @@ But it's bigger, so it has more moving parts.
 We don't use it because Eglot is more than enough for most people.
 If you want to use LSP mode check out their [[https://emacs-lsp.github.io/lsp-mode/][documentation]] or the [[https://github.com/MiniApollo/kickstart.emacs/wiki][project wiki]] page for more information.
 #+begin_src emacs-lisp
+    (use-package tuareg
+      :ensure t
+      :mode (("\\.ml\\'" . tuareg-mode)
+             ("\\.mli\\'" . tuareg-mode)
+             ("\\.ocamlinit\\'" . tuareg-mode))
+      :hook (tuareg-mode . eglot-ensure))
+    (use-package dune
+      :ensure t)
+
+    (use-package utop
+      :ensure t
+      :config
+      (setq utop-command "opam exec -- utop -- -emacs")
+      :hook (tuareg-mode . utop-minor-mode))
+
     (use-package go-mode)
     (use-package haskell-mode
       :ensure t
@@ -900,7 +922,9 @@ If you want to use LSP mode check out their [[https://emacs-lsp.github.io/lsp-mo
       ;; Manual lsp servers
       :config
       (add-to-list 'eglot-server-programs
-                   '(typst-ts-mode . ("tinymist"))))
+                   '(typst-ts-mode . ("tinymist")))
+      (add-to-list 'eglot-server-programs
+                   '(tuareg-mode . ("ocamllsp"))))
 #+end_src
 
 ** Mason.el

@@ -4,6 +4,7 @@ local ensure_installed = {
   "go", "rust", "haskell", "typescript", "javascript", "tsx",
   "html", "css", "json", "bash",
   "http", "markdown", "latex",
+  "ocaml", "ocaml_interface", "ocamllex",
 }
 
 treesitter.install(ensure_installed)
