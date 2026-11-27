@@ -1,4 +1,0 @@
-opam 
-opam switch
-opam install ocamllsp
-opam install ocaml-lsp-server

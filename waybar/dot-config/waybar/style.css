@@ -1,81 +1,125 @@
-@define-color foreground #bdbdbd;
-@define-color background #080808;
+
+@define-color bg #1A1A1A;
+@define-color fg #E6E6C2;
+@define-color bg-secondary #242624;
+@define-color selection #343B37;
+@define-color muted #81968A;
+
+@define-color green #5AE79F;
+@define-color blue #63B7E9;
+@define-color orange #E7A85A;
+@define-color red #E77B5A;
+@define-color magenta #CC88E9;
+@define-color yellow #E2E75A;
+@define-color cyan #65C9C9;
+
+@define-color highlight @blue;
 
 * {
-  background-color: @background;
-  color: @foreground;
-
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  font-family: 'CaskaydiaMono Nerd Font';
-  font-size: 12px;
+    font-family: AporeticSerifMonoNerdFont, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 12px;
 }
 
-.modules-left {
-  margin-left: 8px;
+window#waybar {
+    background-color: @bg;
+    color: @fg;
 }
 
-.modules-right {
-  margin-right: 8px;
+#workspaces {
+    margin: 0px 0px 0px 6px;
 }
 
 #workspaces button {
-  all: initial;
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 9px;
+    padding: 2px;
+    margin: 4px 0px 4px 4px;
+    background: @bg-secondary;
+    border-radius: 2px;
+    color: @fg;
 }
 
-#workspaces button.empty {
-  opacity: 0.5;
+#workspaces button.active {
+    background: @highlight;
+    padding: 2px;
+    color: @bg;
+    font-weight: 700;
 }
 
-#cpu,
+#workspaces button.urgent {
+    background: @red;
+    color: @bg;
+}
+
 #battery,
-#pulseaudio {
-  min-width: 12px;
-  margin: 0 7.5px;
+#bluetooth,
+#network,
+#cpu,
+#memory,
+#volume {
+    border-radius: 8px;
+    padding: 5px 8px;
+    background: @bg-secondary;
+    color: @fg;
+    margin: 5px 5px 5px 0px;
 }
 
-#tray {
-  margin-right: 16px;
+#pulseaudio-slider {
+    padding: 0px;
+    margin: 0px;
+    margin-left: 8px;
 }
 
-#bluetooth {
-  margin-right: 16px;
+#pulseaudio-slider slider {
+    all: unset;
+    min-height: 0;
+    min-width: 0;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
 }
 
-#network {
-  margin-right: 13px;
+#pulseaudio-slider trough {
+    min-height: 5px;
+    min-width: 65px;
+    border-radius: 5px;
+    background: @selection;
 }
 
-#custom-expand-icon {
-  margin-right: 10px;
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background: @highlight;
+}
+
+#custom-notifications {
+    margin-left: 12px;
+    color: @fg;
+}
+
+#media {
+    color: @green;
+    margin: 7px 0px 7px 20px;
+}
+
+#custom-media-animation {
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+#custom-media-now-playing {
+    margin-right: 10px;
+}
+
+#custom-media-time {
+    color: @muted;
+    font-size: 14px;
 }
 
 tooltip {
-  padding: 2px;
+    background: @bg;
+    border-radius: 5px;
 }
 
-/* #custom-update { */
-/*   font-size: 10px; */
-/* } */
-
-#clock {
-  margin-left: 8.75px;
+tooltip label {
+    color: @fg;
 }
-
-.hidden {
-  opacity: 0;
-}
-
-/* #custom-screenrecording-indicator { */
-/*   min-width: 12px; */
-/*   margin-left: 8.75px; */
-/*   font-size: 10px; */
-/* } */
-/**/
-/* #custom-screenrecording-indicator.active { */
-/*   color: #a55555; */
-/* } */

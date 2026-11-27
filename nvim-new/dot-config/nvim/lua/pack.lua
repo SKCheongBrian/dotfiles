@@ -13,6 +13,7 @@ vim.pack.add({
   { src = 'https://github.com/mrcjkb/haskell-tools.nvim',       version = vim.version.range('^10') },
   "https://github.com/lervag/vimtex",
   "https://github.com/Julian/lean.nvim",
+  "https://github.com/folke/tokyonight.nvim",
   "https://github.com/rose-pine/neovim",
   "https://github.com/metalelf0/black-metal-theme-neovim",
   {

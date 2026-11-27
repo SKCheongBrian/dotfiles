@@ -34,7 +34,7 @@
                          ("elpa" . "https://elpa.gnu.org/packages/")
                          ("nongnu" . "https://elpa.nongnu.org/nongnu/"))) ;; For Eat Terminal
 
-(setq package-quickstart t) ;; For blazingly fast startup times, this line makes startup miles faster
+(setq package-quickstart nil) ;; For blazingly fast startup times, this line makes startup miles faster
 
 (use-package async
   :defer
@@ -78,7 +78,7 @@
   (scroll-conservatively 10) ;; Smooth scrolling
   (scroll-margin 10)
 
-  ;; (pixel-scroll-precision-mode t) ;; Precise pixel scrolling. i.e. smooth scrolling (GUI only)
+  ;; (pixel-scroll-precision-mode nil) ;; Precise pixel scrolling. i.e. smooth scrolling (GUI only)
   ;; (pixel-scroll-precision-use-momentum nil)
 
   (indent-tabs-mode nil) ;; Only use spaces for indentation
@@ -321,20 +321,27 @@
 ;;                (evil-normalize-keymaps))))
 ;;          nil nil t))
 
-(use-package kanagawa-themes
+(use-package gruber-darker-theme
+  :ensure t)
+
+(use-package tokyo-night
   :ensure t
   :config
   (load-theme 'spike t))
+
+(use-package naysayer-theme
+  :ensure t)
+
+(use-package kanagawa-themes
+  :ensure t)
 
 (use-package modus-themes
   :ensure t)
 
 (use-package ef-themes
-  :ensure t
-  :config
-  (setq ef-themes-to-toggle '(ef-night ef-maris-dark)))
+  :ensure t)
 
-(add-to-list 'default-frame-alist '(alpha-background . 90)) ;; For all new frames henceforth
+(add-to-list 'default-frame-alist '(alpha-background . 100)) ;; For all new frames henceforth
 
 ;; Transparency in terminal
 (defun start/tui-enable-transparency ()
@@ -355,6 +362,9 @@
 
 (use-package nerd-icons-ibuffer
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
+(use-package rainbow-mode
+  :ensure t)
 
 (use-package projectile
   :hook (after-init . projectile-mode)
@@ -384,6 +394,7 @@
   (setq utop-command "opam exec -- utop -- -emacs")
   :hook (tuareg-mode . utop-minor-mode))
 
+(use-package racket-mode)
 (use-package go-mode)
 (use-package haskell-mode
   :ensure t
@@ -949,3 +960,12 @@
 
 (use-package ws-butler
   :hook (after-init . ws-butler-global-mode))
+
+(use-package pass
+  :ensure t
+  :commands pass)
+
+(use-package esup
+  :defer
+  :custom
+  (esup-depth 0))

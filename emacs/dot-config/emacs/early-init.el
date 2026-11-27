@@ -45,7 +45,7 @@
 (set-face-attribute 'default nil
                     :family "Aporetic Sans Mono"
                     :weight 'regular
-                    :height 180)
+                    :height 130)
 
 (add-to-list 'default-frame-alist
              '(font . "Aporetic Sans Mono"))

@@ -1,0 +1,2 @@
+;;; -*- coding: utf-8; mode: lisp-data -*-
+(("/home/bc/dotfiles/emacs/dot-config/emacs/init.org" . 32852) ("/home/bc/.password-store/netflix/pwd.gpg" . 43) ("/home/bc/.password-store/mattermost/plse.gpg" . 48) ("/home/bc/.password-store/hotcrp/pw.gpg" . 30) ("/home/bc/.password-store/github/personal.gpg" . 50) ("/home/bc/.password-store/amazon/primevideo.gpg" . 54))

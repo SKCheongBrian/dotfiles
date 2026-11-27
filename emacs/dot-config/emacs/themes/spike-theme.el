@@ -1,110 +1,194 @@
-;;; spike-theme.el --- Nice theme for the goodest boy
+;;; spike-theme.el --- Nice theme for the goodest boy -*- lexical-binding: t; -*-
 
+;;; Commentary:
+;; A theme not inspired by Spike but he is my dog so it's dedicated to him.
+
+;;; Code:
 (deftheme spike
   "The theme for the good boy.")
 
-(let ((bg "#0f0f0f")
-      (fg "#f4decd")
-      (black "#0f0f0f")
-      (black-b "#6c756f")
-      (red "#f16e65")
-      (red-b "#f16e65")
-      (green "#7ec97e")
-      (green-b "#7ec97e")
-      (orange "#ef934d")
-      (orange-b "#ef934d")
-      (blue "#71b4d6")
-      (blue-b "#71b4d6")
-      (magenta "#e28dc6")
-      (magenta-b "#e28dc6")
-      (cyan "#7ec9a3")
-      (cyan-b "#7ec9a3")
-      (white "#d9cdb5")
-      (white-b "#f4decd"))
+(let* (;; Backgrounds
+       (bg        "#1A1A1A")
+       (bg-alt    "#242624")
+       (bg-hl     "#3A3A3A")
+       (bg-select "#4A4A4A")
+
+       ;; Foregrounds
+       (fg        "#E6E6C2")
+       (fg-muted  "#81968A")
+
+       ;; ANSI-inspired palette
+       (black     bg)
+       (black-b   fg-muted)
+
+       (red       "#E77B5A")
+       (red-b     red)
+
+       (green     "#5AE79F")
+       (green-b   green)
+
+       (yellow    "#E2E75A")
+       (yellow-b  yellow)
+
+       (orange    "#E7A85A")
+
+       (blue      "#63B7E9")
+       (blue-b    blue)
+
+       (magenta   "#CC88E9")
+       (magenta-b magenta)
+
+       (cyan      "#00DADA")
+       (cyan-b    cyan)
+
+       (white     fg)
+       (white-b   fg))
+
   (custom-theme-set-faces
    'spike
 
-   ;; basic ui
+   ;; Basic UI
    `(default ((t (:foreground ,fg :background ,bg))))
-   `(cursor ((t (:background ,white))))
+   `(cursor ((t (:background ,fg))))
    `(fringe ((t (:foreground ,black-b :background ,bg))))
-   `(region ((t (:foreground ,bg :background ,white))))
-   `(hl-line ((t (:background "#1e1f1e"))))
+   `(region ((t (:background ,bg-select :extend t))))
+   `(hl-line ((t (:background ,bg-hl :extend t))))
 
-   ;; modeline
-      ;; Mode line
+   ;; Mode line
    `(mode-line
-     ((t (:foreground ,blue
-          :background "#272a28"
+     ((t (:foreground ,orange
+          :background ,bg-alt
           :box nil))))
 
    `(mode-line-inactive
-     ((t (:foreground ,black-b
+     ((t (:foreground ,fg-muted
           :background ,bg
           :box nil))))
 
    `(mode-line-buffer-id
      ((t (:weight bold))))
 
-   ;; Search: current match and other matches
-   `(isearch ((t (:foreground ,bg :background ,orange :weight bold))))
-   `(lazy-highlight ((t (:foreground ,cyan :background "#272a28"))))
-   `(isearch-fail ((t (:foreground ,bg :background ,red))))
+   ;; Search
+   `(isearch
+     ((t (:foreground ,bg :background ,yellow :weight bold))))
 
-   ;; Matching and mismatched parentheses
+   `(lazy-highlight
+     ((t (:foreground ,cyan :background ,bg-hl))))
+
+   `(isearch-fail
+     ((t (:foreground ,bg :background ,red))))
+
+   ;; Parentheses
    `(show-paren-match
-     ((t (:foreground ,cyan :background "#272a28" :weight bold))))
+     ((t (:foreground ,cyan :background ,bg-hl :weight bold))))
+
    `(show-paren-mismatch
      ((t (:foreground ,bg :background ,red :weight bold))))
 
    ;; Line numbers
-   `(line-number ((t (:foreground ,black-b :background ,bg))))
+   `(line-number
+     ((t (:foreground ,fg-muted :background ,bg))))
+
    `(line-number-current-line
      ((t (:foreground ,orange :background ,bg :weight bold))))
 
-   ;; Prompts, links, and general messages
-   `(minibuffer-prompt ((t (:foreground ,blue :weight bold))))
-   `(link ((t (:foreground ,cyan :underline t))))
-   `(error ((t (:foreground ,red :weight bold))))
-   `(warning ((t (:foreground ,orange))))
-   `(success ((t (:foreground ,green))))
+   ;; Prompts, links, messages
+   `(minibuffer-prompt
+     ((t (:foreground ,blue :weight bold))))
 
-   ;; Dired: directory listings
-   `(dired-directory ((t (:foreground ,blue :weight bold))))
-   `(dired-symlink ((t (:foreground ,cyan))))
-   `(dired-marked ((t (:foreground ,magenta :weight bold))))
-   `(dired-flagged ((t (:foreground ,red :weight bold))))
+   `(link
+     ((t (:foreground ,cyan :underline t))))
 
-   ;; Diffs: muted backgrounds for added and removed lines
-   `(diff-added ((t (:foreground ,green :background "#182518"))))
-   `(diff-removed ((t (:foreground ,red :background "#2b1918"))))
-   `(diff-changed ((t (:foreground ,orange :background "#2b2218"))))
-   `(diff-header ((t (:foreground ,white :background "#272a28"))))
+   `(error
+     ((t (:foreground ,red :weight bold))))
+
+   `(warning
+     ((t (:foreground ,orange))))
+
+   `(font-latex-warning-face
+     ((t (:foreground ,orange :weight bold))))
+
+   `(success
+     ((t (:foreground ,green))))
+
+   ;; Dired
+   `(dired-directory
+     ((t (:foreground ,blue :weight bold))))
+
+   `(dired-symlink
+     ((t (:foreground ,cyan))))
+
+   `(dired-marked
+     ((t (:foreground ,magenta :weight bold))))
+
+   `(dired-flagged
+     ((t (:foreground ,red :weight bold))))
+
+   ;; Diffs
+   `(diff-added
+     ((t (:foreground ,green :background "#193428"))))
+
+   `(diff-removed
+     ((t (:foreground ,red :background "#36231E"))))
+
+   `(diff-changed
+     ((t (:foreground ,orange :background "#352D20"))))
+
+   `(diff-header
+     ((t (:foreground ,white :background ,bg-alt))))
+
    `(diff-file-header
-     ((t (:foreground ,blue :background "#272a28" :weight bold))))
+     ((t (:foreground ,blue :background ,bg-alt :weight bold))))
 
-   ;; Completion: emphasize the matching part
-   `(completions-common-part ((t (:foreground ,cyan :weight bold))))
-   `(completions-first-difference ((t (:foreground ,orange))))
+   ;; Completion
+   `(completions-common-part
+     ((t (:foreground ,cyan :weight bold))))
 
-   ;; Headers and hover highlights
+   `(completions-first-difference
+     ((t (:foreground ,orange))))
+
+   ;; Headers and highlights
    `(header-line
-     ((t (:foreground ,white :background "#1e1f1e" :box nil))))
-   `(highlight ((t (:background "#272a28"))))
+     ((t (:foreground ,white :background ,bg-alt :box nil))))
 
-   ;; Secondary selections, e.g. mouse-based selections
+   `(highlight
+     ((t (:background ,bg-hl))))
+
    `(secondary-selection
-     ((t (:foreground ,fg :background "#3b403c"))))
+     ((t (:foreground ,fg :background ,bg-select))))
 
+   ;; Syntax highlighting
+   `(font-lock-comment-face
+     ((t (:foreground ,fg-muted))))
 
-     ;; Syntax
-   `(font-lock-comment-face ((t (:foreground ,black-b))))
-   `(font-lock-string-face ((t (:foreground ,green))))
-   `(font-lock-constant-face ((t (:foreground ,magenta))))
-   `(font-lock-keyword-face ((t (:foreground ,red))))
-   `(font-lock-function-name-face ((t (:foreground ,orange))))
-   `(font-lock-variable-name-face ((t (:foreground ,blue))))
-   `(font-lock-type-face ((t (:foreground ,cyan))))
-   `(font-lock-warning-face ((t (:foreground ,red :weight bold))))))
+   `(font-lock-doc-face
+     ((t (:foreground ,fg-muted))))
+
+   `(font-lock-string-face
+     ((t (:foreground ,green))))
+
+   `(font-lock-constant-face
+     ((t (:foreground ,magenta))))
+
+   `(font-lock-keyword-face
+     ((t (:foreground ,red))))
+
+   `(font-lock-function-name-face
+     ((t (:foreground ,orange))))
+
+   `(font-lock-variable-name-face
+     ((t (:foreground ,blue))))
+
+   `(font-lock-type-face
+     ((t (:foreground ,cyan))))
+
+   `(font-lock-builtin-face
+     ((t (:foreground ,magenta))))
+
+   `(font-lock-preprocessor-face
+     ((t (:foreground ,orange))))
+
+   `(font-lock-warning-face
+     ((t (:foreground ,red :weight bold))))))
 
 (provide-theme 'spike)

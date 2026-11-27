@@ -1,0 +1,141 @@
+
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    display-drun: "Apps";
+    display-run: "Run";
+    display-window: "Windows";
+    drun-display-format: "{name}";
+}
+
+* {
+    bg:             #1A1A1A;
+    fg:             #E6E6C2;
+    bg-secondary:   #242624;
+    selection:      #343B37;
+    muted:          #81968A;
+
+    green:          #5AE79F;
+    blue:           #63B7E9;
+    orange:         #E7A85A;
+    red:            #E77B5A;
+    magenta:        #CC88E9;
+    yellow:         #E2E75A;
+    cyan:           #65C9C9;
+
+    background-color: transparent;
+    text-color: @fg;
+    font: "AporeticSerifMono Nerd Font 13";
+}
+
+window {
+    width: 600px;
+    location: center;
+    anchor: center;
+    border: 1px;
+    border-color: @selection;
+    border-radius: 8px;
+    background-color: @bg;
+    padding: 16px;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing: 12px;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    background-color: @bg-secondary;
+    border-radius: 5px;
+    padding: 10px 12px;
+    spacing: 10px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @blue;
+    background-color: transparent;
+}
+
+entry {
+    placeholder: "Search...";
+    placeholder-color: @muted;
+    text-color: @fg;
+    background-color: transparent;
+    cursor: text;
+}
+
+message {
+    background-color: transparent;
+}
+
+textbox {
+    text-color: @fg;
+    background-color: transparent;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 8;
+    spacing: 4px;
+    fixed-height: false;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg;
+    border-radius: 5px;
+    padding: 9px 10px;
+    spacing: 10px;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg;
+    border-radius: 5px;
+    padding: 9px 10px;
+    spacing: 10px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @selection;
+    text-color: @fg;
+}
+
+element-icon {
+    background-color: transparent;
+    size: 22px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element-text selected.normal {
+    text-color: @blue;
+}
+
+mode-switcher {
+    background-color: transparent;
+}
+
+error-message {
+    background-color: @bg;
+    text-color: @red;
+    padding: 12px;
+}

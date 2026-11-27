@@ -1,0 +1,6 @@
+local terminal    = "kitty"
+local fileManager = "dolphin"
+local runner      = "rofi -show run"
+local launcher    = "rofi -show drun -show-icons"
+local music       = "spotify"
+local browser     = "firefox"

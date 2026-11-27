@@ -1,1 +1,1 @@
-(("darwin" "unix") "arm64" nil)
+(("linux" "unix") "x64" "gnu")

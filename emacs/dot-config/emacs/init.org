@@ -28,6 +28,7 @@
   - [[#doom-modeline][Doom Modeline]]
   - [[#nerd-icons][Nerd Icons]]
 - [[#development][Development]]
+  - [[#rainbow-mode][Rainbow mode]]
   - [[#projectile][Projectile]]
   - [[#markdown][Markdown]]
   - [[#eglot][Eglot]]
@@ -70,6 +71,7 @@
   - [[#indent-guide][Indent-guide]]
   - [[#which-key][Which-Key]]
   - [[#ws-butler][Ws-butler]]
+  - [[#pass][Pass]]
   - [[#esup][Esup]]
 
 * Introduction
@@ -357,7 +359,7 @@ Avg:
 Package quickstart only works with package.el.
 If you plan to use a different package manager, remember to remove this section and the package-quickstart-refresh line in the Auto-tangle hook.
 #+begin_src emacs-lisp
-    (setq package-quickstart t) ;; For blazingly fast startup times, this line makes startup miles faster
+    (setq package-quickstart nil) ;; For blazingly fast startup times, this line makes startup miles faster
 #+end_src
 
 *** Package Async
@@ -410,7 +412,7 @@ Only works with package.el.
       (scroll-conservatively 10) ;; Smooth scrolling
       (scroll-margin 10)
 
-      ;; (pixel-scroll-precision-mode t) ;; Precise pixel scrolling. i.e. smooth scrolling (GUI only)
+      ;; (pixel-scroll-precision-mode nil) ;; Precise pixel scrolling. i.e. smooth scrolling (GUI only)
       ;; (pixel-scroll-precision-use-momentum nil)
 
       (indent-tabs-mode nil) ;; Only use spaces for indentation
@@ -776,24 +778,31 @@ Use consult-theme to easily try out themes (*Epilepsy* Warning).
 
 This theme is something that Brian prefers a lot more.
 #+begin_src emacs-lisp
-    (use-package kanagawa-themes
+    (use-package gruber-darker-theme
+      :ensure t)
+
+    (use-package tokyo-night
       :ensure t
       :config
       (load-theme 'spike t))
+
+    (use-package naysayer-theme
+      :ensure t)
+
+    (use-package kanagawa-themes
+      :ensure t)
 
     (use-package modus-themes
       :ensure t)
 
     (use-package ef-themes
-      :ensure t
-      :config
-      (setq ef-themes-to-toggle '(ef-night ef-maris-dark)))
+      :ensure t)
 #+end_src
 
 ** Transparency
 With Emacs version 29, true transparency has been added.
 #+begin_src emacs-lisp
-    (add-to-list 'default-frame-alist '(alpha-background . 90)) ;; For all new frames henceforth
+    (add-to-list 'default-frame-alist '(alpha-background . 100)) ;; For all new frames henceforth
 
     ;; Transparency in terminal
     (defun start/tui-enable-transparency ()
@@ -829,6 +838,14 @@ Also Doom modeline requires nerd icons.
 #+end_src
 
 * Development
+** Rainbow mode
+Mode to render colours of hexadecimal colours.
+
+This is particularly useful when developing colour schemes, such as the brilor colourscheme.
+#+begin_src emacs-lisp
+    (use-package rainbow-mode
+      :ensure t)
+#+end_src
 ** Projectile
 Project interaction library for Emacs.
 
@@ -896,6 +913,7 @@ If you want to use LSP mode check out their [[https://emacs-lsp.github.io/lsp-mo
       (setq utop-command "opam exec -- utop -- -emacs")
       :hook (tuareg-mode . utop-minor-mode))
 
+    (use-package racket-mode)
     (use-package go-mode)
     (use-package haskell-mode
       :ensure t
@@ -1771,12 +1789,20 @@ Removes whitespace from the ends of lines.
       :hook (after-init . ws-butler-global-mode))
 #+end_src
 
+** Pass
+Password manager from within emacs!
+#+begin_src emacs-lisp
+    (use-package pass
+      :ensure t
+      :commands pass)
+#+end_src
+
 ** Esup
 Emacs Start Up Profiler.
 Benchmark Emacs Startup time: M-x esup
 
 *To use it, remove :tangle no from the beginning of the source code block.*
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
     (use-package esup
       :defer
       :custom
